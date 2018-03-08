@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Plan A</string>
+
+    <string name="loading">加载中...</string>
+    <string name="cancel">取消</string>
+    <string name="ok">确定</string>
+
+    <string name="file_download_error">文件下载错误</string>
+    <string name="file_download_warn">下载任务已存在</string>
+
+</resources>

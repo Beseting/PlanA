@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6598fe</color>
+    <color name="colorPrimaryDark">#608EF0</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="title_bar">#6598fe</color>
+
+    <color name="white">#FFFFFF</color>
+
+    <color name="base_text">#424954</color><!-- 用于基本文字信息，如标题，重要段落文字 -->
+    <color name="text_disabled">#AAAAAA</color><!-- 用于基本文字信息，如标题，重要段落文字 -->
+
+    <color name="btn_enable_false">#F2F2F2</color><!-- 用于基本文字信息，如标题，重要段落文字 -->
+    <color name="list_divider">#E3E3E3</color>
+    <color name="layout_bg">#EFEFEF</color>
+    <color name="frame_bg">#EFEFF4</color>
+</resources>
