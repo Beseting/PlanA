@@ -6,7 +6,7 @@
 
     allprojects {
         repositories {
-    		...
+        	...
 			maven { url 'https://jitpack.io' }
 		}
 	}
@@ -120,12 +120,27 @@
     SDK APPID申请及崩溃日志：https://bugly.qq.com
 
     ndk配置：在主模块的build.gradle中配置
+
         ndk {
             // 设置支持的SO库架构
             abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
         }
 
-    CrashReportHelper.initCrashReport(getApplicationContext(),appId,isDebug); 请在Application类的onCreate方法调用，参数分别为：应用程序上下文对象、腾讯CrashReport SDK的APPID、是否为debug模式（建议测试时为true，正式版时为false）
+    //依赖
+    dependencies {
+
+        ...
+
+        // 腾讯CrashReport
+        implementation 'com.tencent.bugly:crashreport:2.6.6'
+        implementation 'com.tencent.bugly:nativecrashreport:3.3.1'
+    }
+
+    // 初始化Bugly,请在Application类的onCreate方法调用
+    String processName = AppUtils.getProcessName(android.os.Process.myPid());// 获取当前进程名
+    CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(getApplicationContext());// 设置是否为上报进程
+    strategy.setUploadProcess(processName == null || processName.equals(getApplicationContext().getPackageName()));
+    CrashReport.initCrashReport(getApplicationContext(), appId, isDebug, strategy);
 
 ## 8.Retrofit 网络请求
 
