@@ -35,7 +35,11 @@ public abstract class BaseFragment extends BasePermissionsFragment {
         mContext = getContext();//获取上下文对象
         initLoadingDialog();//初始化LoadingDialog
         viewDataBinding = DataBindingUtil.inflate(inflater,getLayoutResId(),container,false);
-        return viewDataBinding.getRoot();
+        if(viewDataBinding == null){
+            return inflater.inflate(getLayoutResId(), container, false);
+        }else{
+            return viewDataBinding.getRoot();
+        }
     }
 
     @Override

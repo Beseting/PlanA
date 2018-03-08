@@ -6,8 +6,8 @@
 
     allprojects {
         repositories {
-        	...
-			maven { url 'https://jitpack.io' }
+            ...
+    		maven { url 'https://jitpack.io' }
 		}
 	}
 
@@ -16,6 +16,10 @@
     dependencies {
 	   compile 'com.github.Beseting:PlanA:LatestRelease'
 	}
+
+## 混淆
+
+  * 请查看app/proguard-rules.pro 混淆文件
 
 ## 1.项目开启dataBinding，在build.gradle中添加
     android{
