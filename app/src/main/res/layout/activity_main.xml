@@ -4,17 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/main_view"
     tools:context="com.cdbhe.plana.MainActivity">
 
-    <Button
-        android:id="@+id/button"
+    <ImageView
+        android:id="@+id/img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="按钮"/>
-
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:src="@mipmap/img_home_banner"
+        android:adjustViewBounds="true"/>
 
 </LinearLayout>
