@@ -58,4 +58,6 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     // FileDownloader
     implementation 'com.liulishuo.filedownloader:library:1.7.1'
+    // 沉浸式状态栏
+    compile 'com.jaeger.statusbarutil:library:1.4.0'
 }

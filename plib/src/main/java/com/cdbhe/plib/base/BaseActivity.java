@@ -7,7 +7,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,6 @@ import android.widget.TextView;
 import com.cdbhe.plib.R;
 import com.cdbhe.plib.utils.ActivityStack;
 import com.cdbhe.plib.utils.LoadingDialog;
-import com.cdbhe.plib.utils.LogUtils;
 import com.cdbhe.plib.utils.MeasureUnitTranUtil;
 
 /**
@@ -195,4 +193,6 @@ public abstract class BaseActivity extends BasePermissionsActivity {
         }
         return false;
     }
+
+
 }
