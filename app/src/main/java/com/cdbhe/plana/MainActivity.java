@@ -2,7 +2,6 @@ package com.cdbhe.plana;
 
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.cdbhe.plib.base.BaseActivity;
 
@@ -10,7 +9,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity {
-    @BindView(R.id.main_view)LinearLayout main_view;
+    @BindView(R.id.img)ImageView img;
     @Override
     public int getContentViewResId() {
         return R.layout.activity_main;
@@ -20,5 +19,7 @@ public class MainActivity extends BaseActivity {
     public void init(Bundle savedInstanceState) {
         ButterKnife.bind(this);
         hideTitleBar();
+//        setStatusBarColor(Color.parseColor("#FE5E4B"));
+        hideStatusBar();
     }
 }

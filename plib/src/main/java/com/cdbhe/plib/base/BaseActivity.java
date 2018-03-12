@@ -1,17 +1,19 @@
 package com.cdbhe.plib.base;
 
-import android.app.Activity;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -203,5 +205,45 @@ public abstract class BaseActivity extends BasePermissionsActivity {
         return false;
     }
 
+    /**
+     * 隐藏状态栏
+     */
+    protected void hideStatusBar(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                //5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色
+                Window window = getWindow();
+                View decorView = window.getDecorView();
+                //两个 flag 要结合使用，表示让应用的主体内容占用系统状态栏的空间
+                int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+                decorView.setSystemUiVisibility(option);
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(Color.TRANSPARENT);
+            } else {
+                Window window = getWindow();
+                WindowManager.LayoutParams attributes = window.getAttributes();
+                int flagTranslucentStatus = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+                attributes.flags |= flagTranslucentStatus;
+                window.setAttributes(attributes);
+            }
+        }
+    }
 
+    /**
+     * 设置状态栏颜色
+     * @param color
+     */
+    protected void setStatusBarColor(int color){
+        setStatusBarColor(color,0);
+    }
+
+    /**
+     * 设置状态栏颜色
+     * @param color
+     * @param alpha
+     */
+    protected void setStatusBarColor(int color,int alpha){
+        StatusBarUtil.setColor(this,color,alpha);
+    }
 }

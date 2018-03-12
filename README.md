@@ -47,6 +47,12 @@
 
   * 获取ViewDataBinding getViewDataBinding(); 获取的实例为ViewDataBinding 需要强转
 
+  * hideStatusBar(); 隐藏状态栏，使布局顶上去
+
+  * setStatusBarColor(color); 设置状态栏颜色
+
+  * setStatusBarColor(color,alpha); 设置状态栏颜色，alpha为透明度
+
   * 6.0+权限请求，requestPermission(permissions,code) 所请求的权限别忘了在Manifest里注册
 
   * 权限请求回调，权限请求成功回调接口：permissionSucceed  权限请求失败回调接口：permissionFailing
