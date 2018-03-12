@@ -1,5 +1,6 @@
 package com.cdbhe.plib.base;
 
+import android.app.Activity;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
@@ -20,6 +21,7 @@ import com.cdbhe.plib.R;
 import com.cdbhe.plib.utils.ActivityStack;
 import com.cdbhe.plib.utils.LoadingDialog;
 import com.cdbhe.plib.utils.MeasureUnitTranUtil;
+import com.jaeger.library.StatusBarUtil;
 
 /**
  * Activity基类
@@ -124,6 +126,13 @@ public abstract class BaseActivity extends BasePermissionsActivity {
      */
     public interface OnTitleBarListener{
         void clickMore(View view);
+    }
+
+    /**
+     * 显示标题栏
+     */
+    protected void showTitleBar(){
+        rlTitleBar.setVisibility(View.VISIBLE);
     }
 
     /**
