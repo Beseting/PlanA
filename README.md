@@ -45,6 +45,8 @@
 
   * 替换标题栏更多icon replaceMoreIcon(int iconId); 参数为新icon的id引用
 
+  * 设置标题栏背景颜色 setTitleBarBg(color); 参数为int颜色值
+
   * 获取ViewDataBinding getViewDataBinding(); 获取的实例为ViewDataBinding 需要强转
 
   * hideStatusBar(); 隐藏状态栏，使布局顶上去
