@@ -12,4 +12,10 @@
         android:layout_height="wrap_content"
         android:src="@mipmap/img_home_banner"
         android:adjustViewBounds="true"/>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></FrameLayout>
 </LinearLayout>
