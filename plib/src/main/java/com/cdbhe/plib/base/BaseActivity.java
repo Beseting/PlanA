@@ -193,6 +193,54 @@ public abstract class BaseActivity extends BasePermissionsActivity {
     }
 
     /**
+     * 设置返回icon
+     * @param icon
+     */
+    protected void setEscIcon(int icon){
+        action_esc.setImageResource(icon);
+    }
+
+    /**
+     * 设置标题颜色
+     * @param color
+     */
+    protected void setTitleTextColor(int color){
+        action_title.setTextColor(color);
+    }
+
+    /**
+     * 获取返回icon
+     * @return
+     */
+    protected ImageView getEscIcon(){
+        return action_esc;
+    }
+
+    /**
+     * 获取标题控件
+     * @return
+     */
+    protected TextView getTitleView(){
+        return action_title;
+    }
+
+    /**
+     * 获取更多icon
+     * @return
+     */
+    protected ImageView getMoreIcon(){
+        return action_more;
+    }
+
+    /**
+     * 获取标题栏
+     * @return
+     */
+    protected RelativeLayout getRlTitleBar(){
+        return rlTitleBar;
+    }
+
+    /**
      * 获取数据绑定
      * @return
      */
