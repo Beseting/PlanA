@@ -185,6 +185,14 @@ public abstract class BaseActivity extends BasePermissionsActivity {
     }
 
     /**
+     * 设置标题栏颜色
+     * @param color
+     */
+    protected void setTitleBarBg(int color){
+        rlTitleBar.setBackgroundColor(color);
+    }
+
+    /**
      * 获取数据绑定
      * @return
      */
