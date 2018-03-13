@@ -2,6 +2,8 @@ package com.cdbhe.plib.base;
 
 import android.app.Activity;
 import android.content.Context;
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -19,8 +21,8 @@ import com.cdbhe.plib.utils.LoadingDialog;
 public abstract class BaseFragment extends BasePermissionsFragment {
     protected Activity mActivity;
     protected Context mContext;
-    private View mRootView;
     public LoadingDialog loadingDialog;
+    protected ViewDataBinding viewDataBinding;
 
     public abstract int getLayoutResId();
     public abstract void init(Bundle savedInstanceState);
@@ -28,12 +30,21 @@ public abstract class BaseFragment extends BasePermissionsFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        mRootView = inflater.inflate(getLayoutResId(), container, false);
         mActivity = getActivity();//获取Activity对象
         mContext = getContext();//获取上下文对象
         initLoadingDialog();//初始化LoadingDialog
+        viewDataBinding = DataBindingUtil.inflate(inflater,getLayoutResId(),container,false);
+        if(viewDataBinding == null){
+            return inflater.inflate(getLayoutResId(), container, false);
+        }else{
+            return viewDataBinding.getRoot();
+        }
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         init(savedInstanceState);
-        return mRootView;
     }
 
     /**
@@ -78,5 +89,9 @@ public abstract class BaseFragment extends BasePermissionsFragment {
             return mNetworkInfo.isAvailable();
         }
         return false;
+    }
+
+    protected ViewDataBinding getViewDataBinding(){
+        return viewDataBinding;
     }
 }
