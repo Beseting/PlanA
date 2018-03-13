@@ -78,8 +78,6 @@
 ## 5.BaseFragment（继承）
   * 与继承BaseActivity类似，不包含TitleBar相关操作
 
-  * 与继承BaseActivity类似，dataBinding用法 ActivityTestBinding activityTestBinding = (ActivityTestBinding) getViewDataBinding();
-
 ## 6.工具类
   * ImageHelper，图片助手工具
 
