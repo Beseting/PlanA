@@ -12,5 +12,4 @@
         android:layout_height="wrap_content"
         android:src="@mipmap/img_home_banner"
         android:adjustViewBounds="true"/>
-
 </LinearLayout>
