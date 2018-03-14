@@ -137,6 +137,14 @@
 
     * DateUtils.getCurrentDay() 获取当前星期几
 
+  * SPUtils SharedPreferences存储工具类
+
+    * SPUtils.setParam(context,key,value) 键值对方式存储数据
+
+    * SPUtils.getParam(context,key,defaultValue) 获取key对应的数据
+
+    * SPUtils.clear(context) 清除存储的数据
+
 ## 7.CrashReportHelper 崩溃日志助手类
 
     SDK APPID申请及崩溃日志：https://bugly.qq.com
