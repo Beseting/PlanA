@@ -76,7 +76,7 @@
 
   * 界面路由（链式带参）：PRouter.getInstance().withInt(key,value).withSting(key,value)....navigation(context,targetActivity)
 
-  * 路由跳转：navigation(context,targetActivity) 或者 navigation(activity,targetActivity,isFinish) 后者多了个是否结束放弃Activity的参数
+  * 路由跳转：navigation(context,targetActivity) 或者 navigation(activity,targetActivity,isFinish) 后者多了个是否结束当前Activity的参数
 
   * 路由参数获取：PRouter.getInt(key)  PRouter.getString(key)  PRouter.getLong(key)...
 
