@@ -13,6 +13,18 @@
         android:src="@mipmap/img_home_banner"
         android:adjustViewBounds="true"/>
 
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="显示"/>
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="隐藏"/>
+
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"

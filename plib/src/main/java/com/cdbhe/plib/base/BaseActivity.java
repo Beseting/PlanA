@@ -9,6 +9,7 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -262,28 +263,42 @@ public abstract class BaseActivity extends BasePermissionsActivity {
     }
 
     /**
-     * 隐藏状态栏
+     * 设置是否显示状态栏 如果显示 则会恢复默认颜色的状态栏
+     * @param isShow
      */
-    protected void hideStatusBar(){
+    protected void setIsShowStatusBar(boolean isShow){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 //5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色
                 Window window = getWindow();
                 View decorView = window.getDecorView();
-                //两个 flag 要结合使用，表示让应用的主体内容占用系统状态栏的空间
-                int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-                decorView.setSystemUiVisibility(option);
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.setStatusBarColor(Color.TRANSPARENT);
+                if(isShow){
+                    int option = View.SYSTEM_UI_FLAG_VISIBLE;
+                    decorView.setSystemUiVisibility(option);
+                }else{
+                    //两个 flag 要结合使用，表示让应用的主体内容占用系统状态栏的空间
+                    int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+                    decorView.setSystemUiVisibility(option);
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                    window.setStatusBarColor(Color.TRANSPARENT);
+                }
+
             } else {
                 Window window = getWindow();
                 WindowManager.LayoutParams attributes = window.getAttributes();
-                int flagTranslucentStatus = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+                int flagTranslucentStatus;
+                if(isShow) {
+                    flagTranslucentStatus = WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+                }else{
+                    flagTranslucentStatus = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+                }
                 attributes.flags |= flagTranslucentStatus;
                 window.setAttributes(attributes);
             }
         }
+        if(isShow)
+            setStatusBarColor(ContextCompat.getColor(this,R.color.colorPrimary));
     }
 
     /**
