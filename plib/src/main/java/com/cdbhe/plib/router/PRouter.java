@@ -1,13 +1,12 @@
 package com.cdbhe.plib.router;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Kevin on 2018/1/30.
@@ -26,6 +25,11 @@ public class PRouter {
 
     public void navigation(Context context,Class<?> targetActivity){
         context.startActivity(new Intent(context,targetActivity));
+    }
+
+    public void navigation(Activity activity, Class<?> targetActivity,boolean isFinish){
+        activity.startActivity(new Intent(activity,targetActivity));
+        if(isFinish) activity.finish();
     }
 
     /**
