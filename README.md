@@ -61,7 +61,7 @@
 
   * 获取ViewDataBinding getViewDataBinding(); 获取的实例为ViewDataBinding 需要强转
 
-  * hideStatusBar(); 隐藏状态栏，使布局顶上去
+  * setIsShowStatusBar(isShow); 是否显示状态栏，true：恢复状态栏位置并默认背景色，false：隐藏状态栏并使布局顶上去
 
   * setStatusBarColor(color); 设置状态栏颜色
 
