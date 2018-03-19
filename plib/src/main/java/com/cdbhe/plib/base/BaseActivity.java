@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -207,6 +208,14 @@ public abstract class BaseActivity extends BasePermissionsActivity {
      */
     protected void setTitleTextColor(int color){
         action_title.setTextColor(color);
+    }
+
+    /**
+     * 设置标题字体大小
+     * @param textSizeSP
+     */
+    protected void setTitleTextSize(int textSizeSP){
+        action_title.setTextSize(TypedValue.COMPLEX_UNIT_SP,textSizeSP);
     }
 
     /**

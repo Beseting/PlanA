@@ -51,6 +51,8 @@
 
   * 设置标题颜色 setTitleTextColor(color);
 
+  * 设置标题字体大小 setTitleTextSize(textSizeSP);
+
   * 获取返回icon getEscIcon();
 
   * 获取标题控件 getTitleView();
