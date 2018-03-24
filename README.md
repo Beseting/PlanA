@@ -7,7 +7,7 @@
     allprojects {
         repositories {
             ...
-        	maven { url 'https://jitpack.io' }
+            maven { url 'https://jitpack.io' }
 		}
 	}
 
@@ -290,6 +290,12 @@
 
   * NoScrollListView：固定高度（不滚动）的自定义ListView，适合滑动嵌套
 
+  * CircleImageView：圆形图片
+
+        app:border_width:边框宽度
+
+        app:border_color:边框颜色
+
   * RatingBar：自定义打分控件
 
         starCount：总分
@@ -311,3 +317,27 @@
         mClickable：是否可点击
 
         onRatingChangeListener：点击改变事件
+
+## 10.图片浏览
+
+  * 单张网络图片
+
+        ImageBrowseIntent.showUrlImageBrowse(mContext,"...");
+
+  * 多张网络图片
+
+        ArrayList<String> imageList = new ArrayList<>();
+        imageList.add("...");
+        ...
+        ImageBrowseIntent.showUrlImageBrowse(mContext,imageList,position);
+
+  * 单张资源图片
+
+        ImageBrowseIntent.showResIdImageBrowse(mContext,R.mipmap.xxx);
+
+  * 多张资源图片
+
+        ArrayList<Integer> imageResList = new ArrayList<>();
+        imageResList.add(R.mipmap.xxx);
+        ...
+        ImageBrowseIntent.showResIdImageBrowse(mContext,imageResList,position);
