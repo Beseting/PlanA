@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.cdbhe.plib.base.BaseActivity;
+import com.kevin.photo_browse.ImageBrowseIntent;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
