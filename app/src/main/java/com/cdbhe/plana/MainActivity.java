@@ -34,8 +34,8 @@ public class MainActivity extends BaseActivity implements CommonHttpCallback,IBa
         hideTitleBar();
 //        setStatusBarColor(Color.parseColor("#FE5E4B"));
 
-        RequestParams.getInstance().addParam("loginName", "admin").addParam("loginPassword", "E10ADC3949BA59ABBE56E057F20F883E");
-        RetrofitClient.getInstance().executePost("api/systemApiAction/loginCheck.App", RequestParams.paramMap, this, this);
+        RequestParams.getInstance().addParam("token", "18383930457");
+        RetrofitClient.getInstance().doPost("api/configure/findEmployee",RequestParams.paramMap, this, this);
 
         testFragment = new TestFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
