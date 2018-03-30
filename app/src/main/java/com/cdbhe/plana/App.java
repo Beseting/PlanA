@@ -22,6 +22,6 @@ public class App extends Application {
         CrashReport.initCrashReport(getApplicationContext(), "420f93d2c2", true, strategy);
 
         //初始化Retrofit
-        RetrofitClient.initBaseUrl("http://118.190.149.80:8090/");
+        RetrofitClient.initBaseUrl("http://192.168.31.177:8090/");
     }
 }
