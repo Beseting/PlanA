@@ -7,7 +7,7 @@
     allprojects {
         repositories {
             ...
-    		maven { url 'https://jitpack.io' }
+            maven { url 'https://jitpack.io' }
 		}
 	}
 
@@ -50,6 +50,8 @@
   * 设置返回icon setEscIcon(color);
 
   * 设置标题颜色 setTitleTextColor(color);
+
+  * 设置标题字体大小 setTitleTextSize(textSizeSP);
 
   * 获取返回icon getEscIcon();
 
@@ -179,89 +181,89 @@
   * 在Application的onCreate中初始化BASE_URL
 
         RetrofitClient.initBaseUrl(BASE_URL);
-  
+
   * 请求参数
 
         RequestParams.getInstance().addParam(key,value).addParam(key,value)...;//链式添加参数
-        
+
         RequestParams.paramMap //参数的map对象
-        
+
         demo：添加参数为id=1，name=Kevin
-        
+
         RequestParams.getInstance().addParam("id",1).addParam("name","Kevin");
-        
+
         RequestParams.paramMap //这个对象返回的就是id=1，name=Kevin的map对象
-        
+
   * IBaseBiz 业务接口基类
 
     * IBaseBiz 用到网络请求的地方就可以在Activity里实现，主要有以下两个实现方法
-    
+
     * getActivity() 获取Activity对象
-    
+
     * toActivity() 到UI执行的方法
-    
+
   * Data / ResponseBody 请求成功返回类型
 
         Data:
-    
+
         {
             status : 1,
             message : "请求成功",
             data : Object
         }
-        
+
         ResponseBody : 将会直接返回解析好的请求字符串
-    
+
   * CommonHttpCallback 请求成功回调接口
 
     * 此接口有一个实现方法onSuccess(requestCode,data);
-    
+
     * requestCode 为请求码，主要用于多个请求并行的时候，在请求成功回调接口里面区分请求对应的响应
-    
+
     * data 请求成功返回的正确处理数据，错误处理数据已经被拦截
-        
+
   * GET请求
 
         RetrofitClient.getInstance().doGet(url,iBaseBiz,commonHttpCallback);//无参，无requestCode
-        
+
         RetrofitClient.getInstance().doGet(url,params,iBaseBiz,commonHttpCallback);//有参，无requestCode
-        
+
         RetrofitClient.getInstance().doGet(url,requestCode,iBaseBiz,commonHttpCallback);//无参，有requestCode
-        
+
         RetrofitClient.getInstance().doGet(url,requestCode, params,iBaseBiz,commonHttpCallback);//有参，有requestCode
-        
+
         commonHttpCallback附带的泛型有Data与ResponseBody，主要是看请求成功回调方法给数据类型
-        
+
   * POST请求
 
         RetrofitClient.getInstance().doPost(url,iBaseBiz,commonHttpCallback);//无参，无requestCode
-        
+
         RetrofitClient.getInstance().doPost(url,params,iBaseBiz,commonHttpCallback);//有参，无requestCode
-        
+
         RetrofitClient.getInstance().doPost(url,requestCode,iBaseBiz,commonHttpCallback);//无参，有requestCode
-        
+
         RetrofitClient.getInstance().doPost(url,requestCode,params,iBaseBiz,commonHttpCallback);//有参，有requestCode
-        
+
         commonHttpCallback附带的泛型有Data与ResponseBody，主要是看请求成功回调方法给数据类型
-        
+
   * 文件上传
 
         RetrofitClient.getInstance().uploadFile(url,iBaseBiz,commonHttpCallback,file);//无参，无requestCode，单个文件上传
-        
+
         RetrofitClient.getInstance().uploadFile(url,params,iBaseBiz,commonHttpCallback,file);//有参，无requestCode，单个文件上传
-        
+
         RetrofitClient.getInstance().uploadFile(url,requestCode,iBaseBiz,commonHttpCallback,file);//无参，有requestCode，单个文件上传
-        
+
         RetrofitClient.getInstance().uploadFile(url,requestCode,params,iBaseBiz,commonHttpCallback,file);//有参，有requestCode，单个文件上传
-        
+
         RetrofitClient.getInstance().uploadFiles(url,iBaseBiz,commonHttpCallback,fileMaps);//无参，无requestCode，多个文件上传
-        
+
         RetrofitClient.getInstance().uploadFiles(url,params,iBaseBiz,commonHttpCallback,fileMaps);//有参，无requestCode，多个文件上传
-        
+
         RetrofitClient.getInstance().uploadFiles(url,requestCode,iBaseBiz,commonHttpCallback,fileMaps);//无参，有requestCode，多个文件上传
-        
+
         RetrofitClient.getInstance().uploadFiles(url,requestCode,params,iBaseBiz,commonHttpCallback,fileMaps);//有参，有requestCode，多个文件上传
-        
+
         commonHttpCallback附带的泛型有Data与ResponseBody，主要是看请求成功回调方法给数据类型
 
   * 取消网络请求
@@ -271,9 +273,71 @@
   * 文件下载
 
         FileDownloadHelper.download(context, url, path, fileDownloadCallback);//文件下载助手
-        
+
         接口回调FileDownloadCallback，有以下两个方法
 
         onProgress(int progress, int total, double percent);//progress进度，total总大小，percent百分比
-        
+
         completed(File file);//完成下载，返回下载完成的file对象
+
+## 9.自定义控件
+
+  * BounceScrollView：仿IOS下拉、上拉反弹效果，继承ScrollView的自定义控件
+
+  * GridViewWithBorder：附带边框的GridView自定义控件
+
+  * NoScrollGridView：固定高度（不滚动）的自定义GridView，适合滑动嵌套
+
+  * NoScrollListView：固定高度（不滚动）的自定义ListView，适合滑动嵌套
+
+  * CircleImageView：圆形图片
+
+        app:border_width:边框宽度
+
+        app:border_color:边框颜色
+
+  * RatingBar：自定义打分控件
+
+        starCount：总分
+
+        starEmpty：默认显示的图
+
+        starFill：显示满的图
+
+        starHalf：显示一半的图
+
+        starImageSize：图片尺寸
+
+        starPadding：内边距
+
+        starStep：显示数量，支持小数点
+
+        stepSize：每次点击所增加的量是整个还是半个
+
+        mClickable：是否可点击
+
+        onRatingChangeListener：点击改变事件
+
+## 10.图片浏览
+
+  * 单张网络图片
+
+        ImageBrowseIntent.showUrlImageBrowse(mContext,"...");
+
+  * 多张网络图片
+
+        ArrayList<String> imageList = new ArrayList<>();
+        imageList.add("...");
+        ...
+        ImageBrowseIntent.showUrlImageBrowse(mContext,imageList,position);
+
+  * 单张资源图片
+
+        ImageBrowseIntent.showResIdImageBrowse(mContext,R.mipmap.xxx);
+
+  * 多张资源图片
+
+        ArrayList<Integer> imageResList = new ArrayList<>();
+        imageResList.add(R.mipmap.xxx);
+        ...
+        ImageBrowseIntent.showResIdImageBrowse(mContext,imageResList,position);

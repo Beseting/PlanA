@@ -14,6 +14,7 @@ import com.cdbhe.plib.http.retrofit.CommonHttpCallback;
 import com.cdbhe.plib.http.retrofit.IBaseBiz;
 import com.cdbhe.plib.http.retrofit.RetrofitClient;
 import com.cdbhe.plib.utils.LogUtils;
+import com.kevin.photo_browse.ImageBrowseIntent;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
