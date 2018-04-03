@@ -11,6 +11,7 @@ import com.cdbhe.plib.http.common.RequestParams;
 import com.cdbhe.plib.http.retrofit.ICommonHttpCallback;
 import com.cdbhe.plib.http.retrofit.IBaseBiz;
 import com.cdbhe.plib.http.retrofit.RetrofitClient;
+import com.cdbhe.plib.router.PRouter;
 import com.cdbhe.plib.utils.LogUtils;
 
 import butterknife.BindView;
@@ -60,8 +61,18 @@ public class MainActivity extends BaseActivity implements ICommonHttpCallback,IB
     }
 
     @Override
+    public void onResponse(int requestCode, Object data) {
+
+    }
+
+    @Override
     public void onSuccess(int requestCode, Object data) {
-        LogUtils.d("-->"+data);
+
+    }
+
+    @Override
+    public void onException(int requestCode, Object data) {
+
     }
 
     @Override

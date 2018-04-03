@@ -214,15 +214,19 @@
 
         ResponseBody : 将会直接返回解析好的请求字符串
 
-  * ICommonHttpCallback 请求成功回调接口
+  * ICommonHttpCallback 请求回调接口
 
-    * 实现方法onSuccess(requestCode,data);
+    * onResponse(requestCode,data); 回调成功，不区分status全返回
 
-    * 实现方法onError(requestCode,e);
+    * onSuccess(requestCode,data); 回调正确状态的data数据 status:1
+
+    * onException(requestCode,data); 回调异常状态data数据 status!=1
+
+    * onError(requestCode,e); 回调错误方法，诸如404,500,timeout等
 
     * requestCode 为请求码，主要用于多个请求并行的时候，在请求成功回调接口里面区分请求对应的响应
 
-    * data 请求成功返回的正确处理数据，错误处理数据已经被拦截
+    * data 请求返回的数据
 
     * e 请求失败的Throwable
 

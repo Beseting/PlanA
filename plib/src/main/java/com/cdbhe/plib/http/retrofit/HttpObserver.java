@@ -20,18 +20,18 @@ public class HttpObserver<T> implements Observer<T> {
     private Context mContext;
     private int requestCode = 9527;
     private String taskId;
-    private ICommonHttpCallback ICommonHttpCallback;
+    private ICommonHttpCallback iCommonHttpCallback;
 
-    public HttpObserver(Context mContext, ICommonHttpCallback ICommonHttpCallback, String taskId) {
+    public HttpObserver(Context mContext, ICommonHttpCallback iCommonHttpCallback, String taskId) {
         this.mContext = mContext;
-        this.ICommonHttpCallback = ICommonHttpCallback;
+        this.iCommonHttpCallback = iCommonHttpCallback;
         this.taskId = taskId;
     }
 
-    public HttpObserver(Context mContext, int requestCode, ICommonHttpCallback ICommonHttpCallback, String taskId) {
+    public HttpObserver(Context mContext, int requestCode, ICommonHttpCallback iCommonHttpCallback, String taskId) {
         this.mContext = mContext;
         this.requestCode = requestCode;
-        this.ICommonHttpCallback = ICommonHttpCallback;
+        this.iCommonHttpCallback = iCommonHttpCallback;
         this.taskId = taskId;
     }
 
@@ -46,12 +46,13 @@ public class HttpObserver<T> implements Observer<T> {
         if (t != null || !t.equals("")) {
             if (t instanceof Data) {//Entity类型返回
                 Data data = (Data) t;
+                iCommonHttpCallback.onResponse(requestCode,data);
                 switch (data.getStatus()) {
                     case 1://正常
-                        ICommonHttpCallback.onSuccess(requestCode, data.getData());
+                        iCommonHttpCallback.onSuccess(requestCode, data.getData());
                         break;
                     default://异常
-                        ToastUtils.showShort(mContext, data.getMessage());
+                        iCommonHttpCallback.onException(requestCode,data);
                         break;
                 }
             } else {//ResponseBody类型返回
@@ -64,7 +65,7 @@ public class HttpObserver<T> implements Observer<T> {
                         e.printStackTrace();
                     }
                 }
-                ICommonHttpCallback.onSuccess(requestCode,result);
+                iCommonHttpCallback.onSuccess(requestCode,result);
             }
         }
     }
@@ -72,7 +73,7 @@ public class HttpObserver<T> implements Observer<T> {
     @Override
     public void onError(Throwable e) {
         ToastUtils.showShort(mContext, ExceptionHandleHelper.getExceptionMsg(e));
-        ICommonHttpCallback.onError(requestCode,e);
+        iCommonHttpCallback.onError(requestCode,e);
     }
 
     @Override
