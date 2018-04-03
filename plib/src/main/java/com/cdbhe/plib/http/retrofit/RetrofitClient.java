@@ -5,31 +5,18 @@ import com.cdbhe.plib.http.gson.DataTypeAdaptor;
 import com.cdbhe.plib.http.model.Data;
 import com.cdbhe.plib.utils.DateUtils;
 import com.cdbhe.plib.utils.FileUtils;
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
-import java.lang.reflect.Type;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
-import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -86,15 +73,15 @@ public class RetrofitClient<T> {
      *
      * @param observable
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String entityEncapsulation(Observable<Data> observable, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
+    public String entityEncapsulation(Observable<Data> observable, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
         String taskId = String.valueOf(DateUtils.getTimeInMillis());
         observable.subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new HttpObserver<Data>(iBaseBiz.getActivity(), commonHttpCallback, taskId));
+                .subscribe(new HttpObserver<Data>(iBaseBiz.getActivity(), ICommonHttpCallback, taskId));
         return taskId;
     }
 
@@ -104,14 +91,14 @@ public class RetrofitClient<T> {
      * @param observable
      * @param requestCode
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String entityEncapsulation(Observable<Data> observable, int requestCode, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
+    public String entityEncapsulation(Observable<Data> observable, int requestCode, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
         String taskId = String.valueOf(DateUtils.getTimeInMillis());
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new HttpObserver<Data>(iBaseBiz.getActivity(), requestCode, commonHttpCallback, taskId));
+                .subscribe(new HttpObserver<Data>(iBaseBiz.getActivity(), requestCode, ICommonHttpCallback, taskId));
         return taskId;
     }
 
@@ -120,14 +107,14 @@ public class RetrofitClient<T> {
      *
      * @param observable
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String responseBodyEncapsulation(Observable<ResponseBody> observable, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
+    public String responseBodyEncapsulation(Observable<ResponseBody> observable, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
         String taskId = String.valueOf(DateUtils.getTimeInMillis());
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new HttpObserver<ResponseBody>(iBaseBiz.getActivity(), commonHttpCallback, taskId));
+                .subscribe(new HttpObserver<ResponseBody>(iBaseBiz.getActivity(), ICommonHttpCallback, taskId));
         return taskId;
     }
 
@@ -137,14 +124,14 @@ public class RetrofitClient<T> {
      * @param observable
      * @param requestCode
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String responseBodyEncapsulation(Observable<ResponseBody> observable, int requestCode, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
+    public String responseBodyEncapsulation(Observable<ResponseBody> observable, int requestCode, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
         String taskId = String.valueOf(DateUtils.getTimeInMillis());
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new HttpObserver<ResponseBody>(iBaseBiz.getActivity(), requestCode, commonHttpCallback, taskId));
+                .subscribe(new HttpObserver<ResponseBody>(iBaseBiz.getActivity(), requestCode, ICommonHttpCallback, taskId));
         return taskId;
     }
 
@@ -155,11 +142,11 @@ public class RetrofitClient<T> {
      *
      * @param url
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String doGet(String url, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
-        return entityEncapsulation(apiService.doGet(url), iBaseBiz, commonHttpCallback);
+    public String doGet(String url, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
+        return entityEncapsulation(apiService.doGet(url), iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -168,11 +155,11 @@ public class RetrofitClient<T> {
      * @param url
      * @param params
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String doGet(String url, Map<String, Object> params, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
-        return entityEncapsulation(apiService.doGet(url, params), iBaseBiz, commonHttpCallback);
+    public String doGet(String url, Map<String, Object> params, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
+        return entityEncapsulation(apiService.doGet(url, params), iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -181,11 +168,11 @@ public class RetrofitClient<T> {
      * @param url
      * @param requestCode
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String doGet(String url, int requestCode, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
-        return entityEncapsulation(apiService.doGet(url), requestCode, iBaseBiz, commonHttpCallback);
+    public String doGet(String url, int requestCode, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
+        return entityEncapsulation(apiService.doGet(url), requestCode, iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -195,11 +182,11 @@ public class RetrofitClient<T> {
      * @param requestCode
      * @param params
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String doGet(String url, int requestCode, Map<String, Object> params, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
-        return entityEncapsulation(apiService.doGet(url, params), requestCode, iBaseBiz, commonHttpCallback);
+    public String doGet(String url, int requestCode, Map<String, Object> params, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
+        return entityEncapsulation(apiService.doGet(url, params), requestCode, iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -207,11 +194,11 @@ public class RetrofitClient<T> {
      *
      * @param url
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String executeGet(String url, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
-        return responseBodyEncapsulation(apiService.executeGet(url), iBaseBiz, commonHttpCallback);
+    public String executeGet(String url, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
+        return responseBodyEncapsulation(apiService.executeGet(url), iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -220,11 +207,11 @@ public class RetrofitClient<T> {
      * @param url
      * @param params
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String executeGet(String url, Map<String, Object> params, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
-        return responseBodyEncapsulation(apiService.executeGet(url, params), iBaseBiz, commonHttpCallback);
+    public String executeGet(String url, Map<String, Object> params, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
+        return responseBodyEncapsulation(apiService.executeGet(url, params), iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -233,11 +220,11 @@ public class RetrofitClient<T> {
      * @param url
      * @param requestCode
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String executeGet(String url, int requestCode, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
-        return responseBodyEncapsulation(apiService.executeGet(url), requestCode, iBaseBiz, commonHttpCallback);
+    public String executeGet(String url, int requestCode, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
+        return responseBodyEncapsulation(apiService.executeGet(url), requestCode, iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -247,11 +234,11 @@ public class RetrofitClient<T> {
      * @param requestCode
      * @param params
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String executeGet(String url, int requestCode, Map<String, Object> params, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
-        return responseBodyEncapsulation(apiService.executeGet(url, params), requestCode, iBaseBiz, commonHttpCallback);
+    public String executeGet(String url, int requestCode, Map<String, Object> params, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
+        return responseBodyEncapsulation(apiService.executeGet(url, params), requestCode, iBaseBiz, ICommonHttpCallback);
     }
 
     /** --------------------------------------------------------  POST  ------------------------------------------------------------------------- **/
@@ -261,11 +248,11 @@ public class RetrofitClient<T> {
      *
      * @param url
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String doPost(String url, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
-        return entityEncapsulation(apiService.doPost(url), iBaseBiz, commonHttpCallback);
+    public String doPost(String url, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
+        return entityEncapsulation(apiService.doPost(url), iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -274,11 +261,11 @@ public class RetrofitClient<T> {
      * @param url
      * @param params
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String doPost(String url, Map<String, Object> params, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
-        return entityEncapsulation(apiService.doPost(url, params), iBaseBiz, commonHttpCallback);
+    public String doPost(String url, Map<String, Object> params, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
+        return entityEncapsulation(apiService.doPost(url, params), iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -287,11 +274,11 @@ public class RetrofitClient<T> {
      * @param url
      * @param requestCode
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String doPost(String url, int requestCode, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
-        return entityEncapsulation(apiService.doPost(url), requestCode, iBaseBiz, commonHttpCallback);
+    public String doPost(String url, int requestCode, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
+        return entityEncapsulation(apiService.doPost(url), requestCode, iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -301,11 +288,11 @@ public class RetrofitClient<T> {
      * @param requestCode
      * @param params
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String doPost(String url, int requestCode, Map<String, Object> params, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
-        return entityEncapsulation(apiService.doPost(url, params), requestCode, iBaseBiz, commonHttpCallback);
+    public String doPost(String url, int requestCode, Map<String, Object> params, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
+        return entityEncapsulation(apiService.doPost(url, params), requestCode, iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -313,11 +300,11 @@ public class RetrofitClient<T> {
      *
      * @param url
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String executePost(String url, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
-        return responseBodyEncapsulation(apiService.executePost(url), iBaseBiz, commonHttpCallback);
+    public String executePost(String url, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
+        return responseBodyEncapsulation(apiService.executePost(url), iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -326,11 +313,11 @@ public class RetrofitClient<T> {
      * @param url
      * @param params
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String executePost(String url, Map<String, Object> params, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
-        return responseBodyEncapsulation(apiService.executePost(url, params), iBaseBiz, commonHttpCallback);
+    public String executePost(String url, Map<String, Object> params, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
+        return responseBodyEncapsulation(apiService.executePost(url, params), iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -339,11 +326,11 @@ public class RetrofitClient<T> {
      * @param url
      * @param requestCode
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String executePost(String url, int requestCode, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
-        return responseBodyEncapsulation(apiService.executePost(url), requestCode, iBaseBiz, commonHttpCallback);
+    public String executePost(String url, int requestCode, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
+        return responseBodyEncapsulation(apiService.executePost(url), requestCode, iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -353,11 +340,11 @@ public class RetrofitClient<T> {
      * @param requestCode
      * @param params
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @return
      */
-    public String executePost(String url, int requestCode, Map<String, Object> params, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback) {
-        return responseBodyEncapsulation(apiService.executePost(url, params), requestCode, iBaseBiz, commonHttpCallback);
+    public String executePost(String url, int requestCode, Map<String, Object> params, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
+        return responseBodyEncapsulation(apiService.executePost(url, params), requestCode, iBaseBiz, ICommonHttpCallback);
     }
 
     /** ---------------------------------------------------------  UploadFile  ----------------------------------------------------------------------------- **/
@@ -367,12 +354,12 @@ public class RetrofitClient<T> {
      *
      * @param url
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @param file
      * @return
      */
-    public String uploadFile(String url, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback, File file) {
-        return entityEncapsulation(apiService.uploadFile(url, FileUtils.getUploadFilePart(file)), iBaseBiz, commonHttpCallback);
+    public String uploadFile(String url, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback, File file) {
+        return entityEncapsulation(apiService.uploadFile(url, FileUtils.getUploadFilePart(file)), iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -381,12 +368,12 @@ public class RetrofitClient<T> {
      * @param url
      * @param params
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @param file
      * @return
      */
-    public String uploadFile(String url, Map<String, Object> params, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback, File file) {
-        return entityEncapsulation(apiService.uploadFile(url, params, FileUtils.getUploadFilePart(file)), iBaseBiz, commonHttpCallback);
+    public String uploadFile(String url, Map<String, Object> params, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback, File file) {
+        return entityEncapsulation(apiService.uploadFile(url, params, FileUtils.getUploadFilePart(file)), iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -395,12 +382,12 @@ public class RetrofitClient<T> {
      * @param url
      * @param requestCode
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @param file
      * @return
      */
-    public String uploadFile(String url, int requestCode, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback, File file) {
-        return entityEncapsulation(apiService.uploadFile(url, FileUtils.getUploadFilePart(file)), requestCode, iBaseBiz, commonHttpCallback);
+    public String uploadFile(String url, int requestCode, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback, File file) {
+        return entityEncapsulation(apiService.uploadFile(url, FileUtils.getUploadFilePart(file)), requestCode, iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -410,12 +397,12 @@ public class RetrofitClient<T> {
      * @param requestCode
      * @param params
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @param file
      * @return
      */
-    public String uploadFile(String url, int requestCode, Map<String, Object> params, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback, File file) {
-        return entityEncapsulation(apiService.uploadFile(url, params, FileUtils.getUploadFilePart(file)), requestCode, iBaseBiz, commonHttpCallback);
+    public String uploadFile(String url, int requestCode, Map<String, Object> params, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback, File file) {
+        return entityEncapsulation(apiService.uploadFile(url, params, FileUtils.getUploadFilePart(file)), requestCode, iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -423,12 +410,12 @@ public class RetrofitClient<T> {
      *
      * @param url
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @param file
      * @return
      */
-    public String executeUploadFile(String url, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback, File file) {
-        return responseBodyEncapsulation(apiService.executeUploadFile(url, FileUtils.getUploadFilePart(file)), iBaseBiz, commonHttpCallback);
+    public String executeUploadFile(String url, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback, File file) {
+        return responseBodyEncapsulation(apiService.executeUploadFile(url, FileUtils.getUploadFilePart(file)), iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -437,12 +424,12 @@ public class RetrofitClient<T> {
      * @param url
      * @param params
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @param file
      * @return
      */
-    public String executeUploadFile(String url, Map<String, Object> params, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback, File file) {
-        return responseBodyEncapsulation(apiService.executeUploadFile(url, params, FileUtils.getUploadFilePart(file)), iBaseBiz, commonHttpCallback);
+    public String executeUploadFile(String url, Map<String, Object> params, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback, File file) {
+        return responseBodyEncapsulation(apiService.executeUploadFile(url, params, FileUtils.getUploadFilePart(file)), iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -451,12 +438,12 @@ public class RetrofitClient<T> {
      * @param url
      * @param requestCode
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @param file
      * @return
      */
-    public String executeUploadFile(String url, int requestCode, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback, File file) {
-        return responseBodyEncapsulation(apiService.executeUploadFile(url, FileUtils.getUploadFilePart(file)), requestCode, iBaseBiz, commonHttpCallback);
+    public String executeUploadFile(String url, int requestCode, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback, File file) {
+        return responseBodyEncapsulation(apiService.executeUploadFile(url, FileUtils.getUploadFilePart(file)), requestCode, iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -466,12 +453,12 @@ public class RetrofitClient<T> {
      * @param requestCode
      * @param params
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @param file
      * @return
      */
-    public String executeUploadFile(String url, int requestCode, Map<String, Object> params, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback, File file) {
-        return responseBodyEncapsulation(apiService.executeUploadFile(url, params, FileUtils.getUploadFilePart(file)), requestCode, iBaseBiz, commonHttpCallback);
+    public String executeUploadFile(String url, int requestCode, Map<String, Object> params, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback, File file) {
+        return responseBodyEncapsulation(apiService.executeUploadFile(url, params, FileUtils.getUploadFilePart(file)), requestCode, iBaseBiz, ICommonHttpCallback);
     }
 
     /** ----------------------------------------------------------- uploadFiles ------------------------------------------------- **/
@@ -481,16 +468,16 @@ public class RetrofitClient<T> {
      *
      * @param url
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @param fileMaps
      * @return
      */
-    public String uploadFiles(String url, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback, Map<String, File> fileMaps) {
+    public String uploadFiles(String url, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback, Map<String, File> fileMaps) {
         Map<String, MultipartBody.Part> maps = new HashMap<>();
         for (String key : fileMaps.keySet()) {
             maps.put(key, FileUtils.getUploadFilePart(fileMaps.get(key)));
         }
-        return entityEncapsulation(apiService.uploadFiles(url, maps), iBaseBiz, commonHttpCallback);
+        return entityEncapsulation(apiService.uploadFiles(url, maps), iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -499,16 +486,16 @@ public class RetrofitClient<T> {
      * @param url
      * @param params
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @param fileMaps
      * @return
      */
-    public String uploadFiles(String url, Map<String, Object> params, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback, Map<String, File> fileMaps) {
+    public String uploadFiles(String url, Map<String, Object> params, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback, Map<String, File> fileMaps) {
         Map<String, MultipartBody.Part> maps = new HashMap<>();
         for (String key : fileMaps.keySet()) {
             maps.put(key, FileUtils.getUploadFilePart(fileMaps.get(key)));
         }
-        return entityEncapsulation(apiService.uploadFiles(url, params, maps), iBaseBiz, commonHttpCallback);
+        return entityEncapsulation(apiService.uploadFiles(url, params, maps), iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -517,16 +504,16 @@ public class RetrofitClient<T> {
      * @param url
      * @param requestCode
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @param fileMaps
      * @return
      */
-    public String uploadFiles(String url, int requestCode, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback, Map<String, File> fileMaps) {
+    public String uploadFiles(String url, int requestCode, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback, Map<String, File> fileMaps) {
         Map<String, MultipartBody.Part> maps = new HashMap<>();
         for (String key : fileMaps.keySet()) {
             maps.put(key, FileUtils.getUploadFilePart(fileMaps.get(key)));
         }
-        return entityEncapsulation(apiService.uploadFiles(url, maps), requestCode, iBaseBiz, commonHttpCallback);
+        return entityEncapsulation(apiService.uploadFiles(url, maps), requestCode, iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -536,16 +523,16 @@ public class RetrofitClient<T> {
      * @param requestCode
      * @param params
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @param fileMaps
      * @return
      */
-    public String uploadFiles(String url, int requestCode, Map<String, Object> params, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback, Map<String, File> fileMaps) {
+    public String uploadFiles(String url, int requestCode, Map<String, Object> params, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback, Map<String, File> fileMaps) {
         Map<String, MultipartBody.Part> maps = new HashMap<>();
         for (String key : fileMaps.keySet()) {
             maps.put(key, FileUtils.getUploadFilePart(fileMaps.get(key)));
         }
-        return entityEncapsulation(apiService.uploadFiles(url, params, maps), requestCode, iBaseBiz, commonHttpCallback);
+        return entityEncapsulation(apiService.uploadFiles(url, params, maps), requestCode, iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -553,16 +540,16 @@ public class RetrofitClient<T> {
      *
      * @param url
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @param fileMaps
      * @return
      */
-    public String executeUploadFiles(String url, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback, Map<String, File> fileMaps) {
+    public String executeUploadFiles(String url, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback, Map<String, File> fileMaps) {
         Map<String, MultipartBody.Part> maps = new HashMap<>();
         for (String key : fileMaps.keySet()) {
             maps.put(key, FileUtils.getUploadFilePart(fileMaps.get(key)));
         }
-        return responseBodyEncapsulation(apiService.executeUploadFiles(url, maps), iBaseBiz, commonHttpCallback);
+        return responseBodyEncapsulation(apiService.executeUploadFiles(url, maps), iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -571,16 +558,16 @@ public class RetrofitClient<T> {
      * @param url
      * @param params
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @param fileMaps
      * @return
      */
-    public String executeUploadFiles(String url, Map<String, Object> params, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback, Map<String, File> fileMaps) {
+    public String executeUploadFiles(String url, Map<String, Object> params, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback, Map<String, File> fileMaps) {
         Map<String, MultipartBody.Part> maps = new HashMap<>();
         for (String key : fileMaps.keySet()) {
             maps.put(key, FileUtils.getUploadFilePart(fileMaps.get(key)));
         }
-        return responseBodyEncapsulation(apiService.executeUploadFiles(url, params, maps), iBaseBiz, commonHttpCallback);
+        return responseBodyEncapsulation(apiService.executeUploadFiles(url, params, maps), iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -589,16 +576,16 @@ public class RetrofitClient<T> {
      * @param url
      * @param requestCode
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @param fileMaps
      * @return
      */
-    public String executeUploadFiles(String url, int requestCode, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback, Map<String, File> fileMaps) {
+    public String executeUploadFiles(String url, int requestCode, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback, Map<String, File> fileMaps) {
         Map<String, MultipartBody.Part> maps = new HashMap<>();
         for (String key : fileMaps.keySet()) {
             maps.put(key, FileUtils.getUploadFilePart(fileMaps.get(key)));
         }
-        return responseBodyEncapsulation(apiService.executeUploadFiles(url, maps), requestCode, iBaseBiz, commonHttpCallback);
+        return responseBodyEncapsulation(apiService.executeUploadFiles(url, maps), requestCode, iBaseBiz, ICommonHttpCallback);
     }
 
     /**
@@ -608,15 +595,15 @@ public class RetrofitClient<T> {
      * @param requestCode
      * @param params
      * @param iBaseBiz
-     * @param commonHttpCallback
+     * @param ICommonHttpCallback
      * @param fileMaps
      * @return
      */
-    public String executeUploadFiles(String url, int requestCode, Map<String, Object> params, IBaseBiz iBaseBiz, CommonHttpCallback<T> commonHttpCallback, Map<String, File> fileMaps) {
+    public String executeUploadFiles(String url, int requestCode, Map<String, Object> params, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback, Map<String, File> fileMaps) {
         Map<String, MultipartBody.Part> maps = new HashMap<>();
         for (String key : fileMaps.keySet()) {
             maps.put(key, FileUtils.getUploadFilePart(fileMaps.get(key)));
         }
-        return responseBodyEncapsulation(apiService.executeUploadFiles(url, params, maps), requestCode, iBaseBiz, commonHttpCallback);
+        return responseBodyEncapsulation(apiService.executeUploadFiles(url, params, maps), requestCode, iBaseBiz, ICommonHttpCallback);
     }
 }

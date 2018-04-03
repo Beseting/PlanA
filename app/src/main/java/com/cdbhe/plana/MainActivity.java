@@ -3,24 +3,21 @@ package com.cdbhe.plana;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
 import com.cdbhe.plib.base.BaseActivity;
 import com.cdbhe.plib.http.common.RequestParams;
-import com.cdbhe.plib.http.model.Data;
-import com.cdbhe.plib.http.retrofit.CommonHttpCallback;
+import com.cdbhe.plib.http.retrofit.ICommonHttpCallback;
 import com.cdbhe.plib.http.retrofit.IBaseBiz;
 import com.cdbhe.plib.http.retrofit.RetrofitClient;
 import com.cdbhe.plib.utils.LogUtils;
-import com.kevin.photo_browse.ImageBrowseIntent;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity implements CommonHttpCallback,IBaseBiz{
+public class MainActivity extends BaseActivity implements ICommonHttpCallback,IBaseBiz{
     @BindView(R.id.frameLayout)FrameLayout frameLayout;
     TestFragment testFragment;
     @Override
@@ -65,5 +62,10 @@ public class MainActivity extends BaseActivity implements CommonHttpCallback,IBa
     @Override
     public void onSuccess(int requestCode, Object data) {
         LogUtils.d("-->"+data);
+    }
+
+    @Override
+    public void onError(int requestCode, Throwable e) {
+
     }
 }

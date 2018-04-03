@@ -214,55 +214,59 @@
 
         ResponseBody : 将会直接返回解析好的请求字符串
 
-  * CommonHttpCallback 请求成功回调接口
+  * ICommonHttpCallback 请求成功回调接口
 
-    * 此接口有一个实现方法onSuccess(requestCode,data);
+    * 实现方法onSuccess(requestCode,data);
+
+    * 实现方法onError(requestCode,e);
 
     * requestCode 为请求码，主要用于多个请求并行的时候，在请求成功回调接口里面区分请求对应的响应
 
     * data 请求成功返回的正确处理数据，错误处理数据已经被拦截
 
+    * e 请求失败的Throwable
+
   * GET请求
 
-        RetrofitClient.getInstance().doGet(url,iBaseBiz,commonHttpCallback);//无参，无requestCode
+        RetrofitClient.getInstance().doGet(url,iBaseBiz,iCommonHttpCallback);//无参，无requestCode
 
-        RetrofitClient.getInstance().doGet(url,params,iBaseBiz,commonHttpCallback);//有参，无requestCode
+        RetrofitClient.getInstance().doGet(url,params,iBaseBiz,iCommonHttpCallback);//有参，无requestCode
 
-        RetrofitClient.getInstance().doGet(url,requestCode,iBaseBiz,commonHttpCallback);//无参，有requestCode
+        RetrofitClient.getInstance().doGet(url,requestCode,iBaseBiz,iCommonHttpCallback);//无参，有requestCode
 
-        RetrofitClient.getInstance().doGet(url,requestCode, params,iBaseBiz,commonHttpCallback);//有参，有requestCode
+        RetrofitClient.getInstance().doGet(url,requestCode, params,iBaseBiz,iCommonHttpCallback);//有参，有requestCode
 
         commonHttpCallback附带的泛型有Data与ResponseBody，主要是看请求成功回调方法给数据类型
 
   * POST请求
 
-        RetrofitClient.getInstance().doPost(url,iBaseBiz,commonHttpCallback);//无参，无requestCode
+        RetrofitClient.getInstance().doPost(url,iBaseBiz,iCommonHttpCallback);//无参，无requestCode
 
-        RetrofitClient.getInstance().doPost(url,params,iBaseBiz,commonHttpCallback);//有参，无requestCode
+        RetrofitClient.getInstance().doPost(url,params,iBaseBiz,iCommonHttpCallback);//有参，无requestCode
 
-        RetrofitClient.getInstance().doPost(url,requestCode,iBaseBiz,commonHttpCallback);//无参，有requestCode
+        RetrofitClient.getInstance().doPost(url,requestCode,iBaseBiz,iCommonHttpCallback);//无参，有requestCode
 
-        RetrofitClient.getInstance().doPost(url,requestCode,params,iBaseBiz,commonHttpCallback);//有参，有requestCode
+        RetrofitClient.getInstance().doPost(url,requestCode,params,iBaseBiz,iCommonHttpCallback);//有参，有requestCode
 
         commonHttpCallback附带的泛型有Data与ResponseBody，主要是看请求成功回调方法给数据类型
 
   * 文件上传
 
-        RetrofitClient.getInstance().uploadFile(url,iBaseBiz,commonHttpCallback,file);//无参，无requestCode，单个文件上传
+        RetrofitClient.getInstance().uploadFile(url,iBaseBiz,iCommonHttpCallback,file);//无参，无requestCode，单个文件上传
 
-        RetrofitClient.getInstance().uploadFile(url,params,iBaseBiz,commonHttpCallback,file);//有参，无requestCode，单个文件上传
+        RetrofitClient.getInstance().uploadFile(url,params,iBaseBiz,iCommonHttpCallback,file);//有参，无requestCode，单个文件上传
 
-        RetrofitClient.getInstance().uploadFile(url,requestCode,iBaseBiz,commonHttpCallback,file);//无参，有requestCode，单个文件上传
+        RetrofitClient.getInstance().uploadFile(url,requestCode,iBaseBiz,iCommonHttpCallback,file);//无参，有requestCode，单个文件上传
 
-        RetrofitClient.getInstance().uploadFile(url,requestCode,params,iBaseBiz,commonHttpCallback,file);//有参，有requestCode，单个文件上传
+        RetrofitClient.getInstance().uploadFile(url,requestCode,params,iBaseBiz,iCommonHttpCallback,file);//有参，有requestCode，单个文件上传
 
-        RetrofitClient.getInstance().uploadFiles(url,iBaseBiz,commonHttpCallback,fileMaps);//无参，无requestCode，多个文件上传
+        RetrofitClient.getInstance().uploadFiles(url,iBaseBiz,iCommonHttpCallback,fileMaps);//无参，无requestCode，多个文件上传
 
-        RetrofitClient.getInstance().uploadFiles(url,params,iBaseBiz,commonHttpCallback,fileMaps);//有参，无requestCode，多个文件上传
+        RetrofitClient.getInstance().uploadFiles(url,params,iBaseBiz,iCommonHttpCallback,fileMaps);//有参，无requestCode，多个文件上传
 
-        RetrofitClient.getInstance().uploadFiles(url,requestCode,iBaseBiz,commonHttpCallback,fileMaps);//无参，有requestCode，多个文件上传
+        RetrofitClient.getInstance().uploadFiles(url,requestCode,iBaseBiz,iCommonHttpCallback,fileMaps);//无参，有requestCode，多个文件上传
 
-        RetrofitClient.getInstance().uploadFiles(url,requestCode,params,iBaseBiz,commonHttpCallback,fileMaps);//有参，有requestCode，多个文件上传
+        RetrofitClient.getInstance().uploadFiles(url,requestCode,params,iBaseBiz,iCommonHttpCallback,fileMaps);//有参，有requestCode，多个文件上传
 
         commonHttpCallback附带的泛型有Data与ResponseBody，主要是看请求成功回调方法给数据类型
 
