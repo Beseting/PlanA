@@ -1,6 +1,7 @@
 package com.cdbhe.plana;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -32,13 +33,20 @@ public class MainActivity extends BaseActivity implements ICommonHttpCallback,IB
         hideTitleBar();
 //        setStatusBarColor(Color.parseColor("#FE5E4B"));
 
-        RequestParams.getInstance().addParam("token", "18383930457");
-        RetrofitClient.getInstance().doPost("api/configure/findEmployee",RequestParams.paramMap, this, this);
+//        RequestParams.getInstance().addParam("token", "18383930457");
+//        RetrofitClient.getInstance().doPost("api/configure/findEmployee",RequestParams.paramMap, this, this);
 
         testFragment = new TestFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.frameLayout,testFragment);
         transaction.commit();
+
+//        PRouter.getInstance().navigation(this,TestActivity.class,1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @OnClick({R.id.btn1,R.id.btn2})

@@ -1,5 +1,6 @@
 package com.cdbhe.plana;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +22,11 @@ public class TestActivity extends BaseActivity {
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityStack.getInstance().popActivity("MainActivity");
+//                ActivityStack.getInstance().popActivity("MainActivity");
+                Intent intent = new Intent();
+                intent.putExtra("name","kevin");
+                setResult(RESULT_OK,intent);
+                finish();
             }
         });
     }

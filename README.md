@@ -80,6 +80,8 @@
 
   * 路由跳转：navigation(context,targetActivity) 或者 navigation(activity,targetActivity,isFinish) 后者多了个是否结束当前Activity的参数
 
+  * 路由跳转：navigation(activity,targetActivity,requestCode) 即相当于startActivityForResult附带Activity结果回调
+
   * 路由参数获取：PRouter.getInt(key)  PRouter.getString(key)  PRouter.getLong(key)...
 
   * PS:调用路由单例PRouter.getInstance()的时候会初始化之前带过的参数，所以在PRouter.getInstance()后再调路由参数获取是拿不到参数的（因为这个时候的参数已经被单例初始化了）

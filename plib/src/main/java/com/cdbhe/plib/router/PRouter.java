@@ -32,6 +32,10 @@ public class PRouter {
         if(isFinish) activity.finish();
     }
 
+    public void navigation(Activity activity,Class<?> targetActivity,int requestCode){
+        activity.startActivityForResult(new Intent(activity,targetActivity),requestCode);
+    }
+
     /**
      * 路由加int参
      * @param key
