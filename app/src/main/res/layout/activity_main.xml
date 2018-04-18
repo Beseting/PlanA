@@ -25,6 +25,12 @@
         android:layout_height="wrap_content"
         android:text="隐藏"/>
 
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="看图"/>
+
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"

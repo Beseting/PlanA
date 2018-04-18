@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 26
-        versionCode 2
-        versionName "1.0.2"
+        targetSdkVersion 27
+        versionCode 3
+        versionName "1.0.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -39,8 +39,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
@@ -59,7 +58,7 @@ dependencies {
     // FileDownloader
     implementation 'com.liulishuo.filedownloader:library:1.7.1'
     // 沉浸式状态栏
-    compile 'com.jaeger.statusbarutil:library:1.5.0'
+    implementation 'com.jaeger.statusbarutil:library:1.5.0'
     //图片浏览
-    compile 'com.github.Beseting:PhotoBrowse:v1.3'
+    implementation 'com.github.Beseting:PhotoBrowse:v1.3'
 }

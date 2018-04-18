@@ -8,12 +8,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.cdbhe.plib.base.BaseActivity;
-import com.cdbhe.plib.http.common.RequestParams;
 import com.cdbhe.plib.http.retrofit.ICommonHttpCallback;
 import com.cdbhe.plib.http.retrofit.IBaseBiz;
-import com.cdbhe.plib.http.retrofit.RetrofitClient;
-import com.cdbhe.plib.router.PRouter;
-import com.cdbhe.plib.utils.LogUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,8 +49,10 @@ public class MainActivity extends BaseActivity implements ICommonHttpCallback,IB
     public void click(View view){
         if(view.getId() == R.id.btn1){
             setIsShowStatusBar(true);
-        }else {
+        }else if(view.getId() == R.id.btn2){
             setIsShowStatusBar(false);
+        }else{
+
         }
     }
 
