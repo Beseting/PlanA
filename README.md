@@ -14,7 +14,7 @@
     2.添加依赖
 
     dependencies {
-	   compile 'com.github.Beseting:PlanA:LatestRelease'
+	   compile 'com.github.Beseting:PlanA:v1.0.18'
 	}
 
 ## 混淆
