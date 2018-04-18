@@ -8,31 +8,17 @@
             name="test"
             type="com.cdbhe.plana.TestModel" />
     </data>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         tools:context="com.cdbhe.plana.TestActivity">
-
-        <Button
-            android:id="@+id/btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="结束MainActivity"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{test.name}"
-            android:textColor="#f00"/>
+            android:text="test"/>
 
-        <ImageView
-            android:id="@+id/img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"/>
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </layout>

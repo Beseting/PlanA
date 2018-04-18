@@ -33,7 +33,7 @@
 
   * 关闭菊花加载模态窗 closeDialog();
 
-  * TitleBar仅支持根布局为线性布局和相对布局
+  * TitleBar仅支持根布局为线性布局和相对布局，且相对布局时需要设置正文的上边距（50dp，TitleBar的高度）
 
   * 隐藏标题栏 hideTitleBar();
 

@@ -3,7 +3,12 @@ package com.cdbhe.plib.router;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
+
+import com.cdbhe.plib.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,16 +29,26 @@ public class PRouter {
     }
 
     public void navigation(Context context,Class<?> targetActivity){
-        context.startActivity(new Intent(context,targetActivity));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ActivityOptionsCompat compat = ActivityOptionsCompat.makeCustomAnimation(context, R.anim.anim_activity_in, R.anim.anim_activity_out);
+            ActivityCompat.startActivity(context, new Intent(context, targetActivity), compat.toBundle());
+        }else{
+            context.startActivity(new Intent(context,targetActivity));
+        }
     }
 
     public void navigation(Activity activity, Class<?> targetActivity,boolean isFinish){
-        activity.startActivity(new Intent(activity,targetActivity));
+        navigation(activity,targetActivity);
         if(isFinish) activity.finish();
     }
 
     public void navigation(Activity activity,Class<?> targetActivity,int requestCode){
-        activity.startActivityForResult(new Intent(activity,targetActivity),requestCode);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ActivityOptionsCompat compat = ActivityOptionsCompat.makeCustomAnimation(activity, R.anim.anim_activity_in, R.anim.anim_activity_out);
+            ActivityCompat.startActivityForResult(activity, new Intent(activity, targetActivity), requestCode, compat.toBundle());
+        }else{
+            activity.startActivityForResult(new Intent(activity,targetActivity),requestCode);
+        }
     }
 
     /**
