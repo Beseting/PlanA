@@ -39,7 +39,7 @@ public class ExceptionHandleHelper {
                     exceptionMsg  = "code:404,msg:请求未找到";
                     break;
                 case REQUEST_TIMEOUT:
-                    exceptionMsg = "code:401,msg:请求超时";
+                    exceptionMsg = "code:408,msg:请求超时";
                     break;
                 case GATEWAY_TIMEOUT:
                     exceptionMsg = "code:504,msg:请求超时";
