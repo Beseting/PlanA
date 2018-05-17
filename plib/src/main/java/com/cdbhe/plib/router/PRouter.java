@@ -29,12 +29,13 @@ public class PRouter {
     }
 
     public void navigation(Context context,Class<?> targetActivity){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            ActivityOptionsCompat compat = ActivityOptionsCompat.makeCustomAnimation(context, R.anim.anim_activity_in, R.anim.anim_activity_out);
-            ActivityCompat.startActivity(context, new Intent(context, targetActivity), compat.toBundle());
-        }else{
-            context.startActivity(new Intent(context,targetActivity));
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+//            ActivityOptionsCompat compat = ActivityOptionsCompat.makeCustomAnimation(context, R.anim.anim_activity_in, R.anim.anim_activity_out);
+//            ActivityCompat.startActivity(context, new Intent(context, targetActivity), compat.toBundle());
+//        }else{
+//            context.startActivity(new Intent(context,targetActivity));
+//        }
+        context.startActivity(new Intent(context, targetActivity));
     }
 
     public void navigation(Activity activity, Class<?> targetActivity,boolean isFinish){
