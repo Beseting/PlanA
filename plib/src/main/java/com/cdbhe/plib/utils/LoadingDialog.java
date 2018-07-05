@@ -32,7 +32,7 @@ public class LoadingDialog {
         // 创建自定义样式的Dialog
         dialog = new Dialog(context, R.style.loading_dialog);
         // 设置返回键无效
-        dialog.setCancelable(false);
+        dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(false);
         dialog.setContentView(layout, new RelativeLayout.LayoutParams(
                 MeasureUnitTranUtil.dip2px(context,250),

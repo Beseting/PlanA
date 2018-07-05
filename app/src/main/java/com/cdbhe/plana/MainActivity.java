@@ -2,6 +2,7 @@ package com.cdbhe.plana;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -16,7 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements ICommonHttpCallback,IBaseBiz{
-    @BindView(R.id.frameLayout)FrameLayout frameLayout;
+//    @BindView(R.id.frameLayout)FrameLayout frameLayout;
     TestFragment testFragment;
     @Override
     public int getContentViewResId() {
@@ -26,16 +27,19 @@ public class MainActivity extends BaseActivity implements ICommonHttpCallback,IB
     @Override
     public void init(Bundle savedInstanceState) {
         ButterKnife.bind(this);
-        hideTitleBar();
+//        hideTitleBar();
+        setTitle("新设置的标题");
+//        setTitleBarBg(Color.RED);
+        setStatusBarColor(Color.RED);
 //        setStatusBarColor(Color.parseColor("#FE5E4B"));
 
 //        RequestParams.getInstance().addParam("token", "18383930457");
 //        RetrofitClient.getInstance().doPost("api/configure/findEmployee",RequestParams.paramMap, this, this);
 
-        testFragment = new TestFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.frameLayout,testFragment);
-        transaction.commit();
+//        testFragment = new TestFragment();
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        transaction.add(R.id.frameLayout,testFragment);
+//        transaction.commit();
 
 //        PRouter.getInstance().navigation(this,TestActivity.class,1);
     }
@@ -45,15 +49,17 @@ public class MainActivity extends BaseActivity implements ICommonHttpCallback,IB
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    @OnClick({R.id.btn1,R.id.btn2,R.id.btn3})
+    @OnClick({R.id.btn1})
     public void click(View view){
         if(view.getId() == R.id.btn1){
-            setIsShowStatusBar(true);
-        }else if(view.getId() == R.id.btn2){
-            setIsShowStatusBar(false);
-        }else{
-
+//            setIsShowStatusBar(true);
+            showDialog();
         }
+//        else if(view.getId() == R.id.btn2){
+//            setIsShowStatusBar(false);
+//        }else{
+//
+//        }
     }
 
     @Override
