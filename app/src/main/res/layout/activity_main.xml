@@ -17,8 +17,7 @@
         android:id="@+id/btn1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="显示"
-        android:visibility="invisible"/>
+        android:text="PRouter路由跳转 带参数'测试参数'"/>
 
     <!--<Button-->
         <!--android:id="@+id/btn2"-->

@@ -231,4 +231,22 @@ public class PRouter {
     public static Object getObject(String key){
         return bundle.get(key);
     }
+
+    /**
+     * 路由加Bundle参
+     * @param bundleParam
+     * @return
+     */
+    public PRouter withBundle(Bundle bundleParam){
+        bundle = bundleParam;
+        return pRouter;
+    }
+
+    /**
+     * 路由获取bundle值
+     * @return
+     */
+    public static Bundle getBundle(){
+        return bundle;
+    }
 }
