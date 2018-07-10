@@ -65,7 +65,7 @@ public class HttpObserver<T> implements Observer<T> {
                         e.printStackTrace();
                     }
                 }
-                iCommonHttpCallback.onSuccess(requestCode,result);
+                iCommonHttpCallback.onResponse(requestCode,result);
             }
         }
     }

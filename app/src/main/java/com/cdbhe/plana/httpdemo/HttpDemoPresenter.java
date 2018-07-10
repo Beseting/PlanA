@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.cdbhe.plib.http.common.RequestParams;
 import com.cdbhe.plib.http.retrofit.RetrofitClient;
+import com.cdbhe.plib.utils.LogUtils;
 
 public class HttpDemoPresenter extends CommonRequestCallback{
     private IHttpDemoBiz iHttpDemoBiz;
@@ -14,7 +15,8 @@ public class HttpDemoPresenter extends CommonRequestCallback{
 
     public void doRequest(){
         RequestParams.getInstance().addParam("token", "18383930457");
-        RetrofitClient.getInstance().doPost("api/configure/findEmployee",RequestParams.paramMap, iHttpDemoBiz, this);
+        String taskId = RetrofitClient.getInstance().doGet("api/configure/findEmployee",RequestParams.paramMap, iHttpDemoBiz, this);
+        RetrofitClient.getInstance().cancelRequest(taskId);
     }
 
     @Override
@@ -22,5 +24,11 @@ public class HttpDemoPresenter extends CommonRequestCallback{
         super.onSuccess(i, o);
         //这里是请求成功并且status为1的时候返回的data数据 data数据为Data实体中的data泛型
         iHttpDemoBiz.refreshUIData(o.toString());
+    }
+
+    @Override
+    public void onResponse(int i, Object o) {
+        super.onResponse(i, o);
+        LogUtils.d("-->"+o);
     }
 }
