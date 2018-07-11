@@ -31,6 +31,7 @@ public class MainActivity extends BaseActivity implements ICommonHttpCallback,IB
 //        setStatusBarColor(Color.RED);
         showMore(this);
         PRouter.getInstance().navigation(this,HttpDemoActivity.class);
+//        PRouter.getInstance().navigation(this,TestActivity.class);
 //        setStatusBarColor(Color.parseColor("#FE5E4B"));
 
 //        RequestParams.getInstance().addParam("token", "18383930457");

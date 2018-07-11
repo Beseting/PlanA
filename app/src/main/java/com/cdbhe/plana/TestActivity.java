@@ -14,6 +14,6 @@ public class TestActivity extends MyBaseActivity {
 
     @Override
     public void initView(Bundle var1) {
-        setTitle("MyBaseActivity实例");
+        setTitle("自定义控件实例");
     }
 }
