@@ -1,8 +1,6 @@
 # PlanA Android快速开发基础架构平台
 ![PlanA.png](https://upload-images.jianshu.io/upload_images/4768944-0be75b48e143f9ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-PlanA是一款集成BaseActivity，Prouter路由管理，多种开发所需工具类，Retrofit2+Okhttp+RxJava的网络请求终极封装（一行代码实现网络请求），文件上传下载，多种开发所需的自定义控件等，PlanA框架正在火热持续维护中，请多多支持！
-
 [![](https://jitpack.io/v/Beseting/PlanA.svg)](https://jitpack.io/#Beseting/PlanA)
 
 ## 1.项目依赖（Gradle）
