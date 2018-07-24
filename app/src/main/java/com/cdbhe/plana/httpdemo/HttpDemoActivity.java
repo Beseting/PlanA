@@ -27,9 +27,7 @@ public class HttpDemoActivity extends BaseActivity implements IHttpDemoBiz{
         requestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.doRequest1();
-                presenter.doRequest2();
-                presenter.doRequest3();
+                presenter.doRequest();
             }
         });
     }

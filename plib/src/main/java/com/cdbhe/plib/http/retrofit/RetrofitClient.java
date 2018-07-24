@@ -97,6 +97,7 @@ public class RetrofitClient<T> {
     public String entityEncapsulation(Observable<Data> observable, int requestCode, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
         String taskId = String.valueOf(DateUtils.getTimeInMillis());
         observable.subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new HttpObserver<Data>(iBaseBiz.getActivity(), requestCode, ICommonHttpCallback, taskId));
         return taskId;
@@ -113,6 +114,7 @@ public class RetrofitClient<T> {
     public String responseBodyEncapsulation(Observable<ResponseBody> observable, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
         String taskId = String.valueOf(DateUtils.getTimeInMillis());
         observable.subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new HttpObserver<ResponseBody>(iBaseBiz.getActivity(), ICommonHttpCallback, taskId));
         return taskId;
@@ -130,6 +132,7 @@ public class RetrofitClient<T> {
     public String responseBodyEncapsulation(Observable<ResponseBody> observable, int requestCode, IBaseBiz iBaseBiz, ICommonHttpCallback<T> ICommonHttpCallback) {
         String taskId = String.valueOf(DateUtils.getTimeInMillis());
         observable.subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new HttpObserver<ResponseBody>(iBaseBiz.getActivity(), requestCode, ICommonHttpCallback, taskId));
         return taskId;
