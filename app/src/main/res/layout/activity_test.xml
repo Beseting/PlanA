@@ -9,7 +9,7 @@
 
         <variable
             name="test"
-            type="com.cdbhe.plana.TestModel" />
+            type="com.cdbhe.plana.MusicModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
