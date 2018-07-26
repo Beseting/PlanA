@@ -19,7 +19,7 @@ PlanA是一款集成BaseActivity，Prouter路由管理，多种开发所需工�
     2.添加依赖
 
     dependencies {
-	   compile 'com.github.Beseting:PlanA:v1.1.1'
+	   compile 'com.github.Beseting:PlanA:v1.1.3'
 	}
 
 ## 2.混淆
