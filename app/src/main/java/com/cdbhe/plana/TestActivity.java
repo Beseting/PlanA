@@ -2,9 +2,7 @@ package com.cdbhe.plana;
 
 import android.os.Bundle;
 
-import com.cdbhe.plib.base.BaseActivity;
-import com.cdbhe.plib.router.PRouter;
-import com.cdbhe.plib.utils.ToastUtils;
+import com.cdbhe.plana.base.MyBaseActivity;
 
 public class TestActivity extends MyBaseActivity {
     @Override

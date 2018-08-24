@@ -18,6 +18,12 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
     private List<T> list;
     private int resLayoutId;
 
+    /**
+     * 构造函数 传值初始化
+     * @param mContext
+     * @param list
+     * @param resLayoutId
+     */
     public CommonAdapter(Context mContext, List<T> list, int resLayoutId) {
         this.mContext = mContext;
         this.list = list;
@@ -118,5 +124,11 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
         return convertView;
     }
 
+    /**
+     * 抽象方法 自定义数据处理
+     * @param holder
+     * @param item
+     * @param position
+     */
     public abstract void convert(Converter holder, T item,int position);
 }

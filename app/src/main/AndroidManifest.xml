@@ -10,15 +10,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".mvvm.splash.SplashActivity"
+            android:theme="@style/AppTheme.transparentBackground">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".mvvm.home.view.HomeActivity" android:screenOrientation="portrait" />
         <activity android:name=".TestActivity" />
-        <activity android:name=".httpdemo.HttpDemoActivity"></activity>
+        <activity android:name=".httpdemo.HttpDemoActivity" />
     </application>
 
 </manifest>

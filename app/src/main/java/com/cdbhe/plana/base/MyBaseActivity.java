@@ -1,8 +1,11 @@
-package com.cdbhe.plana;
+package com.cdbhe.plana.base;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.cdbhe.plib.base.BaseActivity;
+
+import butterknife.ButterKnife;
 
 public abstract class MyBaseActivity extends BaseActivity {
 
@@ -16,6 +19,8 @@ public abstract class MyBaseActivity extends BaseActivity {
 
     @Override
     public void init(Bundle savedInstanceState) {
+        ButterKnife.bind(this);
+        setTitleBarBg(Color.parseColor("#445b53"));
         initView(savedInstanceState);
     }
 }
