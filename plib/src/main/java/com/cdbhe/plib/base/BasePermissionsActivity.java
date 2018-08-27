@@ -110,7 +110,7 @@ public class BasePermissionsActivity extends AppCompatActivity{
     private void showFailingDialog() {
         new AlertDialog.Builder(this)
                 .setTitle("系统提示")
-                .setMessage("当前应用无相关权限，该功能暂时无法使用。如若需要，请单击确定按钮进行权限授权！")
+                .setMessage("请求权限失败，是否手动开启？")
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
 public class TestFragment extends BaseFragment {
     @Override
     public int getLayoutResId() {
-        return R.layout.activity_test;
+        return R.layout.activity_router_test;
     }
 
     @Override

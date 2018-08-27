@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cdbhe.plana">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -10,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mvvm.splash.SplashActivity"
+        <activity
+            android:name=".mvvm.splash.SplashActivity"
             android:theme="@style/AppTheme.transparentBackground">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,9 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvvm.home.view.HomeActivity" android:screenOrientation="portrait" />
-        <activity android:name=".TestActivity" />
+        <activity
+            android:name=".mvvm.home.view.HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvvm.base_activity.view.BaseActivityDemo"
+            android:screenOrientation="portrait" />
+        <activity android:name=".mvvm.router_manage.view.RouterTestActivity" />
         <activity android:name=".httpdemo.HttpDemoActivity" />
+        <activity android:name=".mvvm.router_manage.view.RouterManageActivity"></activity>
     </application>
 
 </manifest>
