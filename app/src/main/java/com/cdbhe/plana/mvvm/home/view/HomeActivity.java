@@ -12,6 +12,7 @@ import com.cdbhe.plana.mvvm.base_activity.view.BaseActivityDemo;
 import com.cdbhe.plana.mvvm.home.adapter.HomeMenuAdapter;
 import com.cdbhe.plana.mvvm.home.model.HomeMenuModel;
 import com.cdbhe.plana.mvvm.router_manage.view.RouterManageActivity;
+import com.cdbhe.plana.mvvm.utils.view.UtilsActivity;
 import com.cdbhe.plib.router.PRouter;
 import com.cdbhe.plib.utils.ToastUtils;
 
@@ -68,7 +69,7 @@ public class HomeActivity extends MyBaseActivity {
                 PRouter.getInstance().navigation(this, RouterManageActivity.class);
                 break;
             case 2://工具类
-
+                PRouter.getInstance().navigation(this, UtilsActivity.class);
                 break;
             case 3://网络请求
 

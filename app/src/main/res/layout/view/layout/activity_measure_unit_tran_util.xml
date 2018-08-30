@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".mvvm.utils.view.MeasureUnitTranUtilActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/topDpEt"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:text="0"
+            android:inputType="number"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:layout_margin="@dimen/dp_10"
+            android:background="@drawable/bg_edit"/>
+
+        <TextView
+            style="@style/baseText"
+            android:text="dp转px"
+            android:textColor="#888"
+            android:textSize="12sp"
+            android:layout_margin="@dimen/dp_10"/>
+
+        <EditText
+            android:id="@+id/topPxEt"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:text="0"
+            android:inputType="number"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:layout_margin="@dimen/dp_10"
+            android:background="@drawable/bg_edit"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/bottomPxEt"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:text="0"
+            android:inputType="number"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:layout_margin="@dimen/dp_10"
+            android:background="@drawable/bg_edit"/>
+
+        <TextView
+            style="@style/baseText"
+            android:text="px转dp"
+            android:textColor="#888"
+            android:textSize="12sp"
+            android:layout_margin="@dimen/dp_10"/>
+
+        <EditText
+            android:id="@+id/bottomDpEt"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:text="0"
+            android:inputType="number"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:layout_margin="@dimen/dp_10"
+            android:background="@drawable/bg_edit"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="点我转换"
+        android:textSize="@dimen/sp_12"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_primary"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginTop="30dp" />
+</LinearLayout>

@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import com.cdbhe.plib.base.BaseActivity;
+import com.cdbhe.plib.utils.ActivityStack;
 
 import butterknife.ButterKnife;
 
@@ -19,8 +20,11 @@ public abstract class MyBaseActivity extends BaseActivity {
 
     @Override
     public void init(Bundle savedInstanceState) {
+        // ButterKnife注入
         ButterKnife.bind(this);
+        // 设置标题栏背景颜色
         setTitleBarBg(Color.parseColor("#445b53"));
+        // 初始化视图
         initView(savedInstanceState);
     }
 }
