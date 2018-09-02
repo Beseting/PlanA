@@ -2,7 +2,7 @@ package com.cdbhe.plana.httpdemo;
 
 import android.content.Context;
 
-import com.cdbhe.plana.MainActivity;
+import com.cdbhe.plana.mvvm.home.view.HomeActivity;
 import com.cdbhe.plib.http.model.Data;
 import com.cdbhe.plib.http.retrofit.ICommonHttpCallback;
 import com.cdbhe.plib.router.PRouter;
@@ -28,7 +28,7 @@ public class CommonRequestCallback implements ICommonHttpCallback {
         ToastUtils.showShort(context,data.getMessage());
         if(data.getStatus() == -1){//身份过期
             ActivityStack.getInstance().clearAllActivity();
-            PRouter.getInstance().navigation(context, MainActivity.class);
+            PRouter.getInstance().navigation(context, HomeActivity.class);
         }
     }
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 按下 -->
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="#334a42" />
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+
+    <item android:state_enabled="false">
+        <shape>
+            <solid android:color="#DDDDDD" />
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+
+    <!-- 常规 -->
+    <item>
+        <shape>
+            <solid android:color="#445b53" />
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+</selector>

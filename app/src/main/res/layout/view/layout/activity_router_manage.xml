@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".mvvm.router_manage.view.RouterManageActivity">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_5"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/baseText"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/dp_10"
+                    android:text="界面路由（不带参）"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:id="@+id/routerWithoutParamBtn"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:text="点我测试"
+                    android:textSize="@dimen/sp_12"
+                    android:textColor="@android:color/white"
+                    android:layout_gravity="right|center_vertical"
+                    android:background="@drawable/btn_primary"
+                    android:layout_marginRight="@dimen/dp_10"/>
+            </LinearLayout>
+
+            <TextView
+                style="@style/baseText"
+                android:text="PRouter.getInstance().navigation(context,targetActivity)"
+                android:textSize="@dimen/sp_12"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:textColor="#ccc"/>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_5"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/baseText"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/dp_10"
+                    android:text="界面路由（链式带参）"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:id="@+id/routerWithParamBtn"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:text="点我测试"
+                    android:textSize="@dimen/sp_12"
+                    android:textColor="@android:color/white"
+                    android:layout_gravity="right|center_vertical"
+                    android:background="@drawable/btn_primary"
+                    android:layout_marginRight="@dimen/dp_10"/>
+            </LinearLayout>
+
+            <TextView
+                style="@style/baseText"
+                android:text="PRouter.getInstance().withInt(key,value).withSting(key,value).withBundle(bundle)....navigation(context,targetActivity)"
+                android:textSize="@dimen/sp_12"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:textColor="#ccc"/>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_5"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/baseText"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/dp_10"
+                    android:text="界面路由（关闭当前界面）"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:id="@+id/routerFinishActivityBtn"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:text="点我测试"
+                    android:textSize="@dimen/sp_12"
+                    android:textColor="@android:color/white"
+                    android:layout_gravity="right|center_vertical"
+                    android:background="@drawable/btn_primary"
+                    android:layout_marginRight="@dimen/dp_10"/>
+            </LinearLayout>
+
+            <TextView
+                style="@style/baseText"
+                android:text="navigation(context,targetActivity) 或者 navigation(activity,targetActivity,isFinish) 后者多了个是否结束当前Activity的参数"
+                android:textSize="@dimen/sp_12"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:textColor="#ccc"/>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_5"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/baseText"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/dp_10"
+                    android:text="界面路由（参数回调）"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:id="@+id/routerResultBtn"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:text="点我测试"
+                    android:textSize="@dimen/sp_12"
+                    android:textColor="@android:color/white"
+                    android:layout_gravity="right|center_vertical"
+                    android:background="@drawable/btn_primary"
+                    android:layout_marginRight="@dimen/dp_10"/>
+            </LinearLayout>
+
+            <TextView
+                style="@style/baseText"
+                android:text="navigation(activity,targetActivity,requestCode) 即相当于startActivityForResult附带Activity结果回调"
+                android:textSize="@dimen/sp_12"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:textColor="#ccc"/>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

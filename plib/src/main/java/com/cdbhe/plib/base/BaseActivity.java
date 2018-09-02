@@ -154,6 +154,13 @@ public abstract class BaseActivity extends BasePermissionsActivity {
     }
 
     /**
+     * 显示返回
+     */
+    protected void showEsc(){
+        action_esc.setVisibility(View.VISIBLE);
+    }
+
+    /**
      * 设置标题
      * @param title
      */

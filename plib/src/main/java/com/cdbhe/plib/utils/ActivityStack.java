@@ -35,7 +35,7 @@ public class ActivityStack {
      */
     public boolean popActivity(String activityName){
         for(Activity activity:mActivityStack){
-            if(activity.getLocalClassName().equals(activityName)){
+            if(activity.getClass().getSimpleName().equals(activityName)){
                 popActivity(activity);
                 return true;
             }
