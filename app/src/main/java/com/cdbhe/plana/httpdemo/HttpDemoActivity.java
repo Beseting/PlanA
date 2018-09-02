@@ -30,6 +30,10 @@ public class HttpDemoActivity extends BaseActivity implements IHttpDemoBiz{
                 presenter.doRequest1();
                 presenter.doRequest2();
                 presenter.doRequest3();
+                presenter.doRequest4();
+                presenter.doRequest5();
+                presenter.doRequest6();
+                presenter.doRequest7();
             }
         });
     }

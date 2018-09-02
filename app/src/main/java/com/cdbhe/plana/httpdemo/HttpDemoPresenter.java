@@ -14,23 +14,38 @@ public class HttpDemoPresenter extends CommonRequestCallback{
     }
 
     public void doRequest1(){
-        RequestParams.getInstance().addParam("pigeonholeKindID", 0).addParam("Action","SearchUserCCReceiptDocList")
-        .addParam("code","").addParam("pageIndex",1).addParam("pageSize",20).addParam("EmployeeID",1)
-        .addParam("title","").addParam("kindID",5).addParam("status",1);
-        RetrofitClient.getInstance().executeGet("handler/ApiOA.ashx",1,RequestParams.paramMap, iHttpDemoBiz, this);
+        RequestParams.getInstance().addParam("token", "18383930457");
+        RetrofitClient.getInstance().executeGet("api/configure/findEmployee",1,RequestParams.paramMap, iHttpDemoBiz, this);
     }
 
     public void doRequest2(){
-        RequestParams.getInstance().addParam("conferenceTitle", "").addParam("Action","SearchParticipantsNoticeList")
-        .addParam("endDate","").addParam("pageIndex",1).addParam("pageSize",20).addParam("EmployeeID",1)
-        .addParam("participantsAddress","").addParam("startDate","").addParam("status",999);
-        RetrofitClient.getInstance().executeGet("handler/ApiOA.ashx",2,RequestParams.paramMap, iHttpDemoBiz, this);
+        RequestParams.getInstance().addParam("token", "18383930457");
+        RetrofitClient.getInstance().executeGet("api/configure/findEmployeeExtend",2,RequestParams.paramMap, iHttpDemoBiz, this);
     }
 
     public void doRequest3(){
-        RequestParams.getInstance().addParam("Action", "SearchNewsReaderList").addParam("pageIndex",1).addParam("pageSize",20)
-        .addParam("newsClassificationID",1435).addParam("source","").addParam("EmployeeID",1).addParam("title","").addParam("status",0);
-        RetrofitClient.getInstance().executeGet("handler/ApiOA.ashx",3,RequestParams.paramMap, iHttpDemoBiz, this);
+        RequestParams.getInstance().addParam("token", "18383930457").addParam("version",0);
+        RetrofitClient.getInstance().executeGet("api/configure/queryDevices",3,RequestParams.paramMap, iHttpDemoBiz, this);
+    }
+
+    public void doRequest4(){
+        RequestParams.getInstance().addParam("token", "18383930457").addParam("version",0);
+        RetrofitClient.getInstance().executeGet("api/configure/queryDeviceTypes",4,RequestParams.paramMap, iHttpDemoBiz, this);
+    }
+
+    public void doRequest5(){
+        RequestParams.getInstance().addParam("token", "18383930457").addParam("version",0);
+        RetrofitClient.getInstance().executeGet("api/configure/queryProblemTypes",5,RequestParams.paramMap, iHttpDemoBiz, this);
+    }
+
+    public void doRequest6(){
+        RequestParams.getInstance().addParam("token", "18383930457").addParam("version",0);
+        RetrofitClient.getInstance().executeGet("api/configure/queryDeviceProblems",6,RequestParams.paramMap, iHttpDemoBiz, this);
+    }
+
+    public void doRequest7(){
+        RequestParams.getInstance().addParam("token", "18383930457").addParam("version",0);
+        RetrofitClient.getInstance().executeGet("api/configure/queryEmployees",7,RequestParams.paramMap, iHttpDemoBiz, this);
     }
 
     @Override
@@ -50,6 +65,18 @@ public class HttpDemoPresenter extends CommonRequestCallback{
                 break;
             case 3:
                 LogUtils.d("request3-->"+o);
+                break;
+            case 4:
+                LogUtils.d("request4-->"+o);
+                break;
+            case 5:
+                LogUtils.d("request5-->"+o);
+                break;
+            case 6:
+                LogUtils.d("request6-->"+o);
+                break;
+            case 7:
+                LogUtils.d("request7-->"+o);
                 break;
         }
     }
