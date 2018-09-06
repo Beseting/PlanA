@@ -12,7 +12,9 @@ import com.cdbhe.plana.mvvm.utils.model.UtilsModel;
 import com.cdbhe.plib.router.PRouter;
 import com.cdbhe.plib.utils.ActivityStack;
 import com.cdbhe.plib.utils.AlertUtils;
+import com.cdbhe.plib.utils.DateUtils;
 import com.cdbhe.plib.utils.LogUtils;
+import com.cdbhe.plib.utils.SPUtils;
 import com.cdbhe.plib.utils.ToastUtils;
 
 import java.util.ArrayList;
@@ -62,7 +64,7 @@ public class UtilsActivity extends MyBaseActivity implements UtilsButtonClickLis
     public void onItemButtonClick(int position) {
         switch (position) {
             case 0:// Activity堆栈（入栈）
-                ToastUtils.showLong(this,"当前Activity已在MyBaseActivity中入栈，勿需重复操作！");
+                ToastUtils.showLong(this,"当前Activity已在BaseActivity中入栈，勿需重复操作！");
                 break;
             case 1:// Activity堆栈（弹栈）
                 AlertUtils.showAlert(this, "提示", "是否将当前Activity进行弹栈操作？", new DialogInterface.OnClickListener() {
@@ -97,16 +99,32 @@ public class UtilsActivity extends MyBaseActivity implements UtilsButtonClickLis
                 PRouter.getInstance().navigation(this,MeasureUnitTranUtilActivity.class);
                 break;
             case 6:// ToastUtils（吐司工具）
-
+//                ToastUtils.showShort(this,"showShort");
+//                ToastUtils.showShort(this,R.string.app_name);
+//                ToastUtils.showLong(this,"showLong");
+//                ToastUtils.showLong(this,R.string.app_name);
+//                ToastUtils.show(this,"show",2000);
+                ToastUtils.show(this,R.string.app_name,2000);
                 break;
             case 7:// AlertUtils（7style的AlertDialog）
-
+                AlertUtils.showAlert(this, "AlertUtils提示标题", "这个是v7Style的AlertDialog", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ToastUtils.showShort(UtilsActivity.this,"点击了确定");
+                    }
+                });
                 break;
             case 8:// DateUtils（日期工具）
-
+                ToastUtils.showShort(this,"当前日期："+DateUtils.getDateStr());
+//                ToastUtils.showShort(this,"当前时间戳："+DateUtils.getTimeInMillis());
+//                ToastUtils.showShort(this,"当前年份："+DateUtils.getCurrentYear());
+//                ToastUtils.showShort(this,"当前月份："+DateUtils.getCurrentMonth());
+//                ToastUtils.showShort(this,"当前号数："+DateUtils.getCurrentDate());
+//                ToastUtils.showShort(this,"当前周几："+DateUtils.getCurrentDate());
                 break;
             case 9:// SPUtils（SharedPreferences存储工具类）
-
+                SPUtils.setParam(this,"currentDate",DateUtils.getDateStr());
+                ToastUtils.showLong(this,"SPUtils储存当期日期值："+SPUtils.getParam(this,"currentDate",""));
                 break;
             default:
                 break;

@@ -9,5 +9,5 @@ import android.content.Context;
 
 public interface IBaseBiz {
     Activity getActivity();
-    void toActivity();
+    void toActivity(Object... objects);
 }
