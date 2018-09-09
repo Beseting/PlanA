@@ -28,7 +28,7 @@
             android:name=".mvvm.base_activity.view.BaseActivityDemo"
             android:screenOrientation="portrait" />
         <activity android:name=".mvvm.router_manage.view.RouterTestActivity" />
-        <activity android:name=".httpdemo.HttpDemoActivity" />
+        <activity android:name=".mvvm.http.view.HttpDemoActivity" />
         <activity android:name=".mvvm.router_manage.view.RouterManageActivity" />
         <activity android:name=".mvvm.utils.view.UtilsActivity" />
         <activity android:name=".mvvm.utils.view.MeasureUnitTranUtilActivity"></activity>

@@ -1,7 +1,7 @@
-package com.cdbhe.plana.httpdemo;
+package com.cdbhe.plana.mvvm.http.biz;
 
 import com.cdbhe.plib.http.retrofit.IBaseBiz;
 
 public interface IHttpDemoBiz extends IBaseBiz {
-    void refreshUIData(String name);
+    String getSearchContent();
 }

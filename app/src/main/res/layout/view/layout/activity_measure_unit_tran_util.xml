@@ -40,7 +40,7 @@
             android:text="0"
             android:inputType="number"
             android:gravity="center"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/darker_gray"
             android:layout_margin="@dimen/dp_10"
             android:background="@drawable/bg_edit"/>
     </LinearLayout>
@@ -78,7 +78,7 @@
             android:text="0"
             android:inputType="number"
             android:gravity="center"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/darker_gray"
             android:layout_margin="@dimen/dp_10"
             android:background="@drawable/bg_edit"/>
     </LinearLayout>
