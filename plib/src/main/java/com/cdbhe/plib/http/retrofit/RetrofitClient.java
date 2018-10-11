@@ -8,6 +8,7 @@ import com.cdbhe.plib.utils.FileUtils;
 import com.google.gson.GsonBuilder;
 
 import java.io.File;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -28,13 +29,24 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RetrofitClient<T> {
-    private static final int DEFAULT_TIMEOUT = 10;
+    private static int DEFAULT_TIMEOUT = 12;
     private ApiService apiService;
-    private OkHttpClient okHttpClient;
     private static String BASE_URL = "https://www.baidu.com/";
 
+    /**
+     * 初始化BaseUrl 需要在Application中初始化
+     * @param baseUrl
+     */
     public static void initBaseUrl(String baseUrl) {
         BASE_URL = baseUrl;
+    }
+
+    /**
+     * 设置超时时间，需要在Application中设置
+     * @param timeout
+     */
+    public static void setDefaultTimeout(int timeout){
+        DEFAULT_TIMEOUT = timeout;
     }
 
     private static class SingletonHolder {
@@ -48,7 +60,7 @@ public class RetrofitClient<T> {
     private RetrofitClient() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapterFactory(DataTypeAdaptor.FACTORY);
-        okHttpClient = new OkHttpClient.Builder()
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addNetworkInterceptor(
                         new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS))
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
@@ -62,8 +74,19 @@ public class RetrofitClient<T> {
         apiService = retrofit.create(ApiService.class);
     }
 
+    /**
+     * 取消目标网络请求
+     * @param taskId
+     */
     public void cancelRequest(String taskId) {
         RxManager.getInstance().cancel(taskId);
+    }
+
+    /**
+     * 取消所有网络请求
+     */
+    public void cancelAll(){
+        RxManager.getInstance().cancelAll();
     }
 
     /** -----------------------------------------------------  Encapsulation  -------------------------------------------------------------------- **/

@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.cdbhe.plib.http.retrofit.RetrofitClient;
 import com.cdbhe.plib.utils.AppUtils;
+import com.cdbhe.plib.utils.LogUtils;
 import com.tencent.bugly.crashreport.CrashReport;
 
 /**
@@ -23,5 +24,6 @@ public class App extends Application {
 
         //初始化Retrofit
         RetrofitClient.initBaseUrl("https://restapi.amap.com/");
+        RetrofitClient.setDefaultTimeout(10);
     }
 }
