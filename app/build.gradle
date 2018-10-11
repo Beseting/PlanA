@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.cdbhe.plana"
-        minSdkVersion 15
+        minSdkVersion 14
         targetSdkVersion 28
         versionCode 4
         versionName "1.0.4"
@@ -48,6 +48,17 @@ android {
                     'src/main/res/layout/adapter',
                     'src/main/res/layout/other'
             ]
+        }
+    }
+
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            def requested = details.requested
+            if (requested.group == 'com.android.support') {
+                if (!requested.name.startsWith("multidex")) {
+                    details.useVersion '28.0.0'
+                }
+            }
         }
     }
 }
