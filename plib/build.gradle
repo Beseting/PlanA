@@ -1,10 +1,10 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 27
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 28
+        targetSdkVersion 27
         versionCode 7
         versionName "1.0.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -56,5 +56,5 @@ dependencies {
     // 沉浸式状态栏
     implementation 'com.jaeger.statusbarutil:library:1.5.0'
     //图片浏览
-    api 'com.github.Beseting:PhotoBrowse:v1.6'
+    api 'com.github.Beseting:PhotoBrowse:v1.7'
 }
