@@ -29,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RetrofitClient<T> {
-    private static int DEFAULT_TIMEOUT = 12;
+    private static long DEFAULT_TIMEOUT = 12;
     private ApiService apiService;
     private static String BASE_URL = "https://www.baidu.com/";
 
@@ -45,7 +45,7 @@ public class RetrofitClient<T> {
      * 设置超时时间，需要在Application中设置
      * @param timeout
      */
-    public static void setDefaultTimeout(int timeout){
+    public static void setDefaultTimeout(long timeout){
         DEFAULT_TIMEOUT = timeout;
     }
 
@@ -61,9 +61,10 @@ public class RetrofitClient<T> {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapterFactory(DataTypeAdaptor.FACTORY);
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addNetworkInterceptor(
-                        new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS))
+                .addNetworkInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS))
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+                .readTimeout(DEFAULT_TIMEOUT,TimeUnit.SECONDS)
+                .writeTimeout(DEFAULT_TIMEOUT,TimeUnit.SECONDS)
                 .build();
         Retrofit retrofit = new Retrofit.Builder()
                 .client(okHttpClient)

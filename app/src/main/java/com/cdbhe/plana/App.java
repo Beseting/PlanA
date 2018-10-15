@@ -24,6 +24,6 @@ public class App extends Application {
 
         //初始化Retrofit
         RetrofitClient.initBaseUrl("https://restapi.amap.com/");
-        RetrofitClient.setDefaultTimeout(10);
+        RetrofitClient.setDefaultTimeout(30);
     }
 }
