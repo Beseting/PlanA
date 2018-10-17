@@ -38,6 +38,7 @@ public abstract class BaseActivity extends BasePermissionsActivity {
     private ImageView action_esc;//标题栏返回按钮
     private TextView action_title;//标题栏标题
     private ImageView action_more;//标题栏更多图标
+    private TextView action_more_tv;//标题栏更多文字
     protected OnTitleBarListener onTitleBarListener;//标题栏更多点击回调接口
     private RelativeLayout rlTitleBar;//标题栏
 
@@ -100,6 +101,7 @@ public abstract class BaseActivity extends BasePermissionsActivity {
         action_esc = rlTitleBar.findViewById(R.id.action_esc);
         action_title = rlTitleBar.findViewById(R.id.action_title);
         action_more = rlTitleBar.findViewById(R.id.action_more);
+        action_more_tv = rlTitleBar.findViewById(R.id.action_more_tv);
         action_esc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,6 +109,12 @@ public abstract class BaseActivity extends BasePermissionsActivity {
             }
         });
         action_more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onTitleBarListener.clickMore(v);
+            }
+        });
+        action_more_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onTitleBarListener.clickMore(v);
@@ -183,6 +191,31 @@ public abstract class BaseActivity extends BasePermissionsActivity {
     protected void showMore(OnTitleBarListener onTitleBarListener){
         this.onTitleBarListener = onTitleBarListener;
         action_more.setVisibility(View.VISIBLE);
+        action_more_tv.setVisibility(View.GONE);
+    }
+
+    /**
+     * 隐藏更多图标
+     */
+    protected void hideMore(){
+        action_more.setVisibility(View.GONE);
+    }
+
+    /**
+     * 显示更多文字 添加更多按钮点击监听
+     * @param onTitleBarListener
+     */
+    protected void showMoreTv(OnTitleBarListener onTitleBarListener){
+        this.onTitleBarListener = onTitleBarListener;
+        action_more_tv.setVisibility(View.VISIBLE);
+        action_more.setVisibility(View.GONE);
+    }
+
+    /**
+     * 隐藏更多文字
+     */
+    protected void hideMoreTv(){
+        action_more_tv.setVisibility(View.GONE);
     }
 
     /**
