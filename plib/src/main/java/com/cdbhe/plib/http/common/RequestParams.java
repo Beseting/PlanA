@@ -4,19 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Kevin on 2017/9/5.
+ * Created by Kevin on 2019/1/4.
  */
 
 public class RequestParams {
-    public static RequestParams requestParams;
     public static Map<String,Object> paramMap;
     public static RequestParams getInstance(){
         paramMap = new HashMap<>();
-        requestParams = new RequestParams();
-        return requestParams;
+        return new RequestParams();
     }
-    public static RequestParams addParam(String key, Object objVal){
+
+    public RequestParams addParam(String key, Object objVal){
         paramMap.put(key,objVal);
-        return requestParams;
+        return this;
     }
 }

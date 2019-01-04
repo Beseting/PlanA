@@ -49,7 +49,6 @@ public abstract class BaseActivity extends BasePermissionsActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);//设置无标题
-        getSupportActionBar().hide();//设置无ActionBar
         viewDataBinding = DataBindingUtil.setContentView(this,getContentViewResId());//初始化DataBinding
         ActivityStack.getInstance().pushActivity(this);//入栈
         initLoadingDialog();//初始化LoadingDialog
@@ -321,16 +320,16 @@ public abstract class BaseActivity extends BasePermissionsActivity {
                 //5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色
                 Window window = getWindow();
                 View decorView = window.getDecorView();
-                if(isShow){
-                    int option = View.SYSTEM_UI_FLAG_VISIBLE;
-                    decorView.setSystemUiVisibility(option);
-                }else{
-                    //两个 flag 要结合使用，表示让应用的主体内容占用系统状态栏的空间
-                    int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-                    decorView.setSystemUiVisibility(option);
-                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                    window.setStatusBarColor(Color.TRANSPARENT);
+                if (isShow) { //显示状态栏
+                    WindowManager.LayoutParams lp = getWindow().getAttributes();
+                    lp.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+                    getWindow().setAttributes(lp);
+                    getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+                } else { //隐藏状态栏
+                    WindowManager.LayoutParams lp = getWindow().getAttributes();
+                    lp.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                    getWindow().setAttributes(lp);
+                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
                 }
 
             } else {

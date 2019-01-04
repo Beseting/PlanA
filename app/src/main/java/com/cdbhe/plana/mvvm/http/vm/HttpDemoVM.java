@@ -1,16 +1,12 @@
 package com.cdbhe.plana.mvvm.http.vm;
 
-import android.os.Environment;
-
-import com.cdbhe.plana.mvvm.http.callback.CommonRequestCallback;
 import com.cdbhe.plana.mvvm.http.biz.IHttpDemoBiz;
+import com.cdbhe.plana.mvvm.http.callback.CommonRequestCallback;
+import com.cdbhe.plana.mvvm.http.model.CustModel;
 import com.cdbhe.plib.http.common.RequestParams;
 import com.cdbhe.plib.http.retrofit.RetrofitClient;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.File;
+import com.cdbhe.plib.utils.JsonUtils;
+import com.cdbhe.plib.utils.LogUtils;
 
 public class HttpDemoVM extends CommonRequestCallback {
     private IHttpDemoBiz iHttpDemoBiz;
@@ -31,11 +27,6 @@ public class HttpDemoVM extends CommonRequestCallback {
         super.onResponse(i, o);
         //跳至UI 进行数据操作
         iHttpDemoBiz.toActivity(o);
-    }
-
-    @Override
-    public void onSuccess(int i, Object o) {
-        super.onSuccess(i, o);
     }
 
     @Override

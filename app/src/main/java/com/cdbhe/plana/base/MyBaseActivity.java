@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import com.cdbhe.plib.base.BaseActivity;
-import com.cdbhe.plib.utils.ActivityStack;
 
 import butterknife.ButterKnife;
 

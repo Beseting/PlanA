@@ -16,6 +16,7 @@ import com.cdbhe.plana.mvvm.base_activity.adapter.BaseActivityButtonAdapter;
 import com.cdbhe.plana.mvvm.base_activity.listener.OnBaseActivityButtonClickListener;
 import com.cdbhe.plana.mvvm.base_activity.model.ButtonModel;
 import com.cdbhe.plib.base.BaseActivity;
+import com.cdbhe.plib.http.common.RequestParams;
 import com.cdbhe.plib.utils.ToastUtils;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class BaseActivityDemo extends MyBaseActivity implements OnBaseActivityBu
     ListView listView;
     private List<ButtonModel> buttonModelList;
     private BaseActivityButtonAdapter adapter;
-    private boolean isShowStatusBar = true;//是否显示状态栏
+    private boolean isShowStatusBar = false;//是否显示状态栏
     private final int PERMISSION_REQUEST_CODE = 1000;
 
     @Override
