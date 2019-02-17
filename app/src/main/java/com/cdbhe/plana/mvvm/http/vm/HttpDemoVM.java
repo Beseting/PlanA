@@ -8,6 +8,8 @@ import com.cdbhe.plib.http.retrofit.RetrofitClient;
 import com.cdbhe.plib.utils.JsonUtils;
 import com.cdbhe.plib.utils.LogUtils;
 
+import org.json.JSONObject;
+
 public class HttpDemoVM extends CommonRequestCallback {
     private IHttpDemoBiz iHttpDemoBiz;
     public HttpDemoVM(IHttpDemoBiz iHttpDemoBiz) {
