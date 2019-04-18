@@ -10,6 +10,9 @@ import com.cdbhe.plib.utils.LogUtils;
 
 import org.json.JSONObject;
 
+import java.util.Hashtable;
+import java.util.Map;
+
 public class HttpDemoVM extends CommonRequestCallback {
     private IHttpDemoBiz iHttpDemoBiz;
     public HttpDemoVM(IHttpDemoBiz iHttpDemoBiz) {
