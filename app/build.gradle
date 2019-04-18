@@ -6,8 +6,8 @@ android {
         applicationId "com.cdbhe.plana"
         minSdkVersion 14
         targetSdkVersion 28
-        versionCode 4
-        versionName "1.0.4"
+        versionCode 5
+        versionName "1.0.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
             // 设置支持的SO库架构
