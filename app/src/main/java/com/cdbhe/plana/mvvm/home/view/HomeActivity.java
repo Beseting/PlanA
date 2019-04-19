@@ -15,13 +15,11 @@ import com.cdbhe.plana.mvvm.http.view.HttpDemoActivity;
 import com.cdbhe.plana.mvvm.router_manage.view.RouterManageActivity;
 import com.cdbhe.plana.mvvm.utils.view.UtilsActivity;
 import com.cdbhe.plib.router.PRouter;
-import com.cdbhe.plib.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 
 public class HomeActivity extends MyBaseActivity {
@@ -40,6 +38,7 @@ public class HomeActivity extends MyBaseActivity {
         setIsShowStatusBar(false);//隐藏状态栏
         hideTitleBar();//隐藏标题栏
         initMenuGridView();
+
     }
 
     /**
@@ -88,7 +87,7 @@ public class HomeActivity extends MyBaseActivity {
 
                 break;
             default://其他
-                Snackbar.make(gridView,"持续维护中，敬请期待！",Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(gridView,"持续维护中，敬请期待！", Snackbar.LENGTH_SHORT).show();
                 break;
         }
     }

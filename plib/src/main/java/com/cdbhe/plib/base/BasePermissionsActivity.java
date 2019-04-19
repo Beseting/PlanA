@@ -1,6 +1,5 @@
 package com.cdbhe.plib.base;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -22,7 +21,7 @@ import java.util.List;
  * Created by Kevin on 2018/1/30.
  */
 
-public class BasePermissionsActivity extends Activity {
+public class BasePermissionsActivity extends AppCompatActivity {
     public static final String TAG = "BasePermissionsActivity";
     public static  int REQUEST_CODE = 0;
 
