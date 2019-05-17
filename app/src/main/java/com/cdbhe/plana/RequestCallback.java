@@ -2,33 +2,23 @@ package com.cdbhe.plana;
 
 import android.content.Context;
 
-import com.cdbhe.plib.http.retrofit.ICommonHttpCallback;
-import com.cdbhe.plib.router.PRouter;
+import com.cdbhe.plib.http.retrofit.ResCallback;
 
-public class RequestCallback implements ICommonHttpCallback {
+public class RequestCallback implements ResCallback {
     private Context context;
 
     public RequestCallback(Context context) {
         this.context = context;
     }
 
+
     @Override
-    public void onResponse(int requestCode, Object data) {
+    public void onResponse(Object o) {
 
     }
 
     @Override
-    public void onSuccess(int requestCode, Object data) {
-
-    }
-
-    @Override
-    public void onException(int requestCode, Object data) {
-
-    }
-
-    @Override
-    public void onError(int requestCode, Throwable e) {
+    public void onError(Throwable e) {
 
     }
 }

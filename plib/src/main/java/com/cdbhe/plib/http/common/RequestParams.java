@@ -8,14 +8,22 @@ import java.util.Map;
  */
 
 public class RequestParams {
-    public static Map<String,Object> paramMap;
+    private Map<String,Object> paramMap;
+
+    public RequestParams() {
+        this.paramMap = new HashMap<>();
+    }
+
     public static RequestParams getInstance(){
-        paramMap = new HashMap<>();
         return new RequestParams();
     }
 
-    public RequestParams addParam(String key, Object objVal){
-        paramMap.put(key,objVal);
+    public RequestParams add(String key,Object value){
+        this.paramMap.put(key,value);
         return this;
+    }
+
+    public Map<String,Object> getParamMap(){
+        return paramMap;
     }
 }

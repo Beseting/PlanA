@@ -13,6 +13,7 @@ import com.cdbhe.plana.mvvm.home.adapter.HomeMenuAdapter;
 import com.cdbhe.plana.mvvm.home.model.HomeMenuModel;
 import com.cdbhe.plana.mvvm.http.view.HttpDemoActivity;
 import com.cdbhe.plana.mvvm.router_manage.view.RouterManageActivity;
+import com.cdbhe.plana.mvvm.upload_download.view.UploadDownloadActivity;
 import com.cdbhe.plana.mvvm.utils.view.UtilsActivity;
 import com.cdbhe.plib.router.PRouter;
 
@@ -75,7 +76,7 @@ public class HomeActivity extends MyBaseActivity {
                 PRouter.getInstance().navigation(this, HttpDemoActivity.class);
                 break;
             case 4://上传下载
-
+                PRouter.getInstance().navigation(this, UploadDownloadActivity.class);
                 break;
             case 5://自定义控件
 

@@ -36,13 +36,17 @@ public class HttpDemoActivity extends MyBaseActivity implements IHttpDemoBiz {
         setTitle("网络请求");
     }
 
-    @OnClick(R.id.requestBtn)
+    @OnClick({R.id.requestBtn,R.id.cancelBtn})
     public void click(View view){
-        if(!TextUtils.isEmpty(getSearchContent())){
-            vm = new HttpDemoVM(this);
-            vm.doRequest();
+        if(view.getId()==R.id.requestBtn) {
+            if (!TextUtils.isEmpty(getSearchContent())) {
+                vm = new HttpDemoVM(this);
+                vm.doRequest();
+            } else {
+                ToastUtils.showShort(this, "请输入搜索内容");
+            }
         }else{
-            ToastUtils.showShort(this,"请输入搜索内容");
+            vm.cancel();
         }
     }
 

@@ -21,7 +21,6 @@ public class LoadingDialog {
     public AVLoadingIndicatorView avView;
 
     public Dialog createLoadingDialog(Context context) {
-
         // 首先得到整个View
         View view = LayoutInflater.from(context).inflate(R.layout.layout_progress_dialog, null);
         // 获取整个布局

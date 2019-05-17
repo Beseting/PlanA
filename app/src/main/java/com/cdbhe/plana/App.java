@@ -2,6 +2,7 @@ package com.cdbhe.plana;
 
 import android.app.Application;
 
+import com.cdbhe.plib.http.retrofit.HttpConfig;
 import com.cdbhe.plib.http.retrofit.RetrofitClient;
 import com.cdbhe.plib.utils.AppUtils;
 import com.cdbhe.plib.utils.LogUtils;
@@ -23,7 +24,6 @@ public class App extends Application {
         CrashReport.initCrashReport(getApplicationContext(), "420f93d2c2", true, strategy);
 
         //初始化Retrofit
-        RetrofitClient.initBaseUrl("https://restapi.amap.com/");
-        RetrofitClient.setDefaultTimeout(30);
+        RetrofitClient.getInstance().init(new HttpConfig.Builder().setBaseUrl("https://restapi.amap.com/").build());
     }
 }

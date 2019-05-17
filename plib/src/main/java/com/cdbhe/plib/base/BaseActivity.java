@@ -218,6 +218,22 @@ public abstract class BaseActivity extends BasePermissionsActivity {
     }
 
     /**
+     * 设置更多文字内容
+     * @param text
+     */
+    protected void setMoreTv(String text){
+        this.action_more_tv.setText(text);
+    }
+
+    /**
+     * 设置更多文字内容
+     * @param resId
+     */
+    protected void setMoreTv(int resId){
+        this.action_more_tv.setText(resId);
+    }
+
+    /**
      * 替换更多图标
      * @param iconId
      */

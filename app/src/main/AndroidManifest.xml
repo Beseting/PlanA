@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.cdbhe.plana">
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -12,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".mvvm.upload_download.view.UploadDownloadActivity"></activity>
         <activity
             android:name=".mvvm.splash.SplashActivity"
             android:theme="@style/AppTheme.transparentBackground">
@@ -31,7 +33,7 @@
         <activity android:name=".mvvm.http.view.HttpDemoActivity" />
         <activity android:name=".mvvm.router_manage.view.RouterManageActivity" />
         <activity android:name=".mvvm.utils.view.UtilsActivity" />
-        <activity android:name=".mvvm.utils.view.MeasureUnitTranUtilActivity"></activity>
+        <activity android:name=".mvvm.utils.view.MeasureUnitTranUtilActivity" />
     </application>
 
 </manifest>

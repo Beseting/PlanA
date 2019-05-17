@@ -48,7 +48,6 @@ public class RxManager {
     }
 
     public void cancelAll() {
-        Set<String> keySet = map.keySet();
         for(String key:map.keySet()){
             CompositeDisposable compositeDisposable = map.get(key);
             compositeDisposable.clear();

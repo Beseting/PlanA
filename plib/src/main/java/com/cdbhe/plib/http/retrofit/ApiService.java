@@ -1,21 +1,21 @@
 package com.cdbhe.plib.http.retrofit;
 
 
-import com.cdbhe.plib.http.model.Data;
-
 import java.util.Map;
 
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
-import retrofit2.http.PartMap;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
+import retrofit2.http.Streaming;
 
 /**
  * Created by Kevin on 2018/3/5.
@@ -23,347 +23,80 @@ import retrofit2.http.QueryMap;
 
 public interface ApiService {
 
-    /** ---------------------------------------  GET  ------------------------------------------ **/
-
     /**
-     * GET请求 无参
-     *
-     * @param url
-     * @return Data
-     **/
-    @GET("{url}")
-    Observable<Data> doGet(@Path(value = "url", encoded = true) String url);
-
-    /**
-     * GET请求 无参 headers
-     * @param headers
-     * @param url
-     * @return
-     */
-    @GET("{url}")
-    Observable<Data> doGet(@HeaderMap Map<String,String> headers,@Path(value = "url", encoded = true) String url);
-
-    /**
-     * GET请求 有参
-     *
-     * @param url
-     * @param maps
-     * @return Data
-     **/
-    @GET("{url}")
-    Observable<Data> doGet(@Path(value = "url", encoded = true) String url, @QueryMap Map<String, Object> maps);
-
-    /**
-     * GET请求 有参 headers
-     *
-     * @param url
-     * @param maps
-     * @return Data
-     **/
-    @GET("{url}")
-    Observable<Data> doGet(@HeaderMap Map<String,String> headers,@Path(value = "url", encoded = true) String url, @QueryMap Map<String, Object> maps);
-
-    /**
-     * GET请求 无参
-     *
-     * @param url
-     * @return ResponseBody
-     **/
-    @GET("{url}")
-    Observable<ResponseBody> executeGet(@Path(value = "url", encoded = true) String url);
-
-    /**
-     * GET请求 无参 headers
-     *
-     * @param url
-     * @return ResponseBody
-     **/
-    @GET("{url}")
-    Observable<ResponseBody> executeGet(@HeaderMap Map<String,String> headers,@Path(value = "url", encoded = true) String url);
-
-    /**
-     * GET请求 有参
-     *
-     * @param url
-     * @param maps
-     * @return ResponseBody
-     **/
-    @GET("{url}")
-    Observable<ResponseBody> executeGet(@Path(value = "url", encoded = true) String url, @QueryMap Map<String, Object> maps);
-
-    /**
-     * GET请求 有参 headers
-     *
-     * @param url
-     * @param maps
-     * @return ResponseBody
-     **/
-    @GET("{url}")
-    Observable<ResponseBody> executeGet(@HeaderMap Map<String,String> headers,@Path(value = "url", encoded = true) String url, @QueryMap Map<String, Object> maps);
-
-
-    /** --------------------------------------  POST  ------------------------------------------ **/
-
-    /**
-     * POST请求 无参
-     *
-     * @param url 地址
-     * @return Data
-     **/
-    @POST("{url}")
-    Observable<Data> doPost(@Path(value = "url", encoded = true) String url);
-
-    /**
-     * POST请求 无参 headers
-     *
-     * @param url 地址
-     * @return Data
-     **/
-    @POST("{url}")
-    Observable<Data> doPost(@HeaderMap Map<String,String> headers,@Path(value = "url", encoded = true) String url);
-
-    /**
-     * POST请求 有参
-     *
-     * @param url  地址
-     * @param maps 参数 键值对
-     * @return Data
-     **/
-    @POST("{url}")
-    Observable<Data> doPost(@Path(value = "url", encoded = true) String url, @QueryMap Map<String, Object> maps);
-
-    /**
-     * POST请求 有参 headers
-     *
-     * @param url  地址
-     * @param maps 参数 键值对
-     * @return Data
-     **/
-    @POST("{url}")
-    Observable<Data> doPost(@HeaderMap Map<String,String> headers,@Path(value = "url", encoded = true) String url, @QueryMap Map<String, Object> maps);
-
-    /**
-     * POST请求 无参
-     *
-     * @param url 地址
-     * @return ResponseBody
-     **/
-    @POST("{url}")
-    Observable<ResponseBody> executePost(@Path(value = "url", encoded = true) String url);
-
-    /**
-     * POST请求 无参 headers
+     * Get请求 常规参数
      *
      * @param headers
-     * @param url 地址
-     * @return ResponseBody
-     **/
-    @POST("{url}")
-    Observable<ResponseBody> executePost(@HeaderMap Map<String,String> headers,@Path(value = "url", encoded = true) String url);
+     * @param url
+     * @param params
+     * @return
+     */
+    @GET("{url}")
+    Observable<ResponseBody> get(@HeaderMap Map<String, Object> headers, @Path(value = "url", encoded = true) String url, @QueryMap Map<String, Object> params);
 
     /**
-     * POST请求 有参
-     *
-     * @param url  地址
-     * @param maps 参数 键值对
-     * @return ResponseBody
-     **/
-    @POST("{url}")
-    Observable<ResponseBody> executePost(@Path(value = "url", encoded = true) String url, @QueryMap Map<String, Object> maps);
-
-    /**
-     * POST请求 有参 headers
+     * Get请求 Json参数
      *
      * @param headers
-     * @param url  地址
-     * @param maps 参数 键值对
-     * @return ResponseBody
-     **/
-    @POST("{url}")
-    Observable<ResponseBody> executePost(@HeaderMap Map<String,String> headers,@Path(value = "url", encoded = true) String url, @QueryMap Map<String, Object> maps);
-
-
-    /** -----------------------------------  File Upload  -------------------------------------- **/
-
-    /**
-     * 单个文件上传 无参
-     *
-     * @param url  地址
-     * @param file 文件
-     **/
-    @Multipart
-    @POST("{url}")
-    Observable<Data> uploadFile(@Path(value = "url", encoded = true) String url,
-                                @Part MultipartBody.Part file);
-
-    /**
-     * 单个文件上传 无参 headers
-     *
-     * @param url  地址
-     * @param file 文件
-     **/
-    @Multipart
-    @POST("{url}")
-    Observable<Data> uploadFile(@HeaderMap Map<String,String> headers,@Path(value = "url", encoded = true) String url,
-                                @Part MultipartBody.Part file);
-
-    /**
-     * 单个文件上传 有参
-     *
-     * @param url  地址
-     * @param file 文件
-     * @param maps 参数
-     **/
-    @Multipart
-    @POST("{url}")
-    Observable<Data> uploadFile(@Path(value = "url", encoded = true) String url,
-                                @QueryMap Map<String, Object> maps,
-                                @Part MultipartBody.Part file);
-
-    /**
-     * 单个文件上传 有参 headers
-     *
-     * @param url  地址
-     * @param file 文件
-     * @param maps 参数
-     **/
-    @Multipart
-    @POST("{url}")
-    Observable<Data> uploadFile(@HeaderMap Map<String,String> headers,@Path(value = "url", encoded = true) String url,
-                                @QueryMap Map<String, Object> maps,
-                                @Part MultipartBody.Part file);
-
-    /**
-     * 单个文件上传 无参
-     *
-     * @param url  地址
-     * @param file 文件
-     **/
-    @Multipart
-    @POST("{url}")
-    Observable<ResponseBody> executeUploadFile(@Path(value = "url", encoded = true) String url,
-                                               @Part MultipartBody.Part file);
-
-    /**
-     * 单个文件上传 无参 headers
-     *
-     * @param url  地址
-     * @param file 文件
-     **/
-    @Multipart
-    @POST("{url}")
-    Observable<ResponseBody> executeUploadFile(@HeaderMap Map<String,String> headers,@Path(value = "url", encoded = true) String url,
-                                               @Part MultipartBody.Part file);
-
-    /**
-     * 单个文件上传 有参
-     *
-     * @param url  地址
-     * @param file 文件
-     * @param maps 参数
-     **/
-    @Multipart
-    @POST("{url}")
-    Observable<ResponseBody> executeUploadFile(@Path(value = "url", encoded = true) String url,
-                                               @QueryMap Map<String, Object> maps, @Part MultipartBody.Part file);
-
-    /**
-     * 单个文件上传 有参 headers
-     *
-     * @param url  地址
-     * @param file 文件
-     * @param maps 参数
-     **/
-    @Multipart
-    @POST("{url}")
-    Observable<ResponseBody> executeUploadFile(@HeaderMap Map<String,String> headers,@Path(value = "url", encoded = true) String url,
-                                               @QueryMap Map<String, Object> maps, @Part MultipartBody.Part file);
-
-    /**
-     * 多个文件/图片上传 无参
-     *
-     * @param url  地址
-     * @param maps 参数 键值对
-     **/
-    @POST("{url}")
-    Observable<Data> uploadFiles(@Path("url") String url, @PartMap() Map<String, MultipartBody.Part> maps);
-
-    /**
-     * 多个文件/图片上传 无参 headers
-     *
-     * @param url  地址
-     * @param maps 参数 键值对
-     **/
-    @POST("{url}")
-    Observable<Data> uploadFiles(@HeaderMap Map<String,String> headers,@Path("url") String url, @PartMap() Map<String, MultipartBody.Part> maps);
-
-    /**
-     * 多个文件/图片上传 有参
-     *
      * @param url
-     * @param maps
-     * @param partMaps
+     * @param body
+     * @return
+     */
+    @GET("{url}")
+    Observable<ResponseBody> get(@HeaderMap Map<String, Object> headers, @Path(value = "url", encoded = true) String url, @Body RequestBody body);
+
+    /**
+     * Post请求 常规参数
+     *
+     * @param headers
+     * @param url
+     * @param params
      * @return
      */
     @POST("{url}")
-    Observable<Data> uploadFiles(@Path("url") String url,
-                                 @QueryMap Map<String, Object> maps,
-                                 @PartMap() Map<String, MultipartBody.Part> partMaps);
+    Observable<ResponseBody> post(@HeaderMap Map<String, Object> headers, @Path(value = "url", encoded = true) String url, @QueryMap Map<String, Object> params);
 
     /**
-     * 多个文件/图片上传 有参 headers
+     * Post请求 Json参数
      *
+     * @param headers
      * @param url
-     * @param maps
-     * @param partMaps
+     * @param body
      * @return
      */
     @POST("{url}")
-    Observable<Data> uploadFiles(@HeaderMap Map<String,String> headers,@Path("url") String url,
-                                 @QueryMap Map<String, Object> maps,
-                                 @PartMap() Map<String, MultipartBody.Part> partMaps);
+    Observable<ResponseBody> post(@HeaderMap Map<String, Object> headers, @Path(value = "url", encoded = true) String url, @Body RequestBody body);
 
     /**
-     * 多个文件/图片上传 无参
-     *
-     * @param url  地址
-     * @param maps 参数 键值对
-     **/
-    @POST("{url}")
-    Observable<ResponseBody> executeUploadFiles(@Path("url") String url, @PartMap() Map<String, MultipartBody.Part> maps);
-
-    /**
-     * 多个文件/图片上传 无参 headers
-     *
-     * @param url  地址
-     * @param maps 参数 键值对
-     **/
-    @POST("{url}")
-    Observable<ResponseBody> executeUploadFiles(@HeaderMap Map<String,String> headers,@Path("url") String url, @PartMap() Map<String, MultipartBody.Part> maps);
-
-    /**
-     * 多个文件/图片上传 有参
-     *
+     * 文件上传 常规参数
+     * @param headers
      * @param url
-     * @param maps
-     * @param partMaps
+     * @param params
+     * @param filePart
      * @return
      */
+    @Multipart
     @POST("{url}")
-    Observable<ResponseBody> executeUploadFiles(@Path("url") String url,
-                                                @QueryMap Map<String, Object> maps,
-                                                @PartMap() Map<String, MultipartBody.Part> partMaps);
+    Observable<ResponseBody> uploadFile(@HeaderMap Map<String, Object> headers,@Path(value = "url", encoded = true) String url,@QueryMap Map<String, Object> params,@Part MultipartBody.Part filePart);
 
     /**
-     * 多个文件/图片上传 有参 headers
-     *
+     * 文件上传 Json参数
+     * @param headers
      * @param url
-     * @param maps
-     * @param partMaps
+     * @param body
+     * @param filePart
      * @return
      */
+    @Multipart
     @POST("{url}")
-    Observable<ResponseBody> executeUploadFiles(@HeaderMap Map<String,String> headers,@Path("url") String url,
-                                                @QueryMap Map<String, Object> maps,
-                                                @PartMap() Map<String, MultipartBody.Part> partMaps);
+    Observable<ResponseBody> uploadFile(@HeaderMap Map<String, Object> headers,@Path(value = "url", encoded = true) String url,@Body RequestBody body,@Part MultipartBody.Part filePart);
+
+    /**
+     * 文件下载
+     * @param url
+     * @return
+     */
+    @Streaming
+    @GET("{url}")
+    Observable<ResponseBody> downloadFile(@Path(value = "url", encoded = true) String url);
 }

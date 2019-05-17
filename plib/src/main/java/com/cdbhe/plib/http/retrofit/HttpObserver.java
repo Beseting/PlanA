@@ -1,40 +1,23 @@
 package com.cdbhe.plib.http.retrofit;
 
-import android.content.Context;
-
 import com.cdbhe.plib.http.common.RxManager;
-import com.cdbhe.plib.http.model.Data;
-import com.cdbhe.plib.utils.ToastUtils;
-
-import java.io.IOException;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import okhttp3.ResponseBody;
 
 /**
- * Created by Kevin on 2018/3/8.
+ * Created by Kevin on 2019/5/13.
  */
 
-public class HttpObserver<T> implements Observer<T> {
-    private Context mContext;
-    private int requestCode = 9527;
+public class HttpObserver implements Observer<ResponseBody> {
     private String taskId;
-    private ICommonHttpCallback iCommonHttpCallback;
+    private ResCallback resCallback;
 
-    public HttpObserver(Context mContext, ICommonHttpCallback iCommonHttpCallback, String taskId) {
-        this.mContext = mContext;
-        this.iCommonHttpCallback = iCommonHttpCallback;
+    public HttpObserver(ResCallback resCallback, String taskId) {
+        this.resCallback = resCallback;
         this.taskId = taskId;
     }
-
-    public HttpObserver(Context mContext, int requestCode, ICommonHttpCallback iCommonHttpCallback, String taskId) {
-        this.mContext = mContext;
-        this.requestCode = requestCode;
-        this.iCommonHttpCallback = iCommonHttpCallback;
-        this.taskId = taskId;
-    }
-
 
     @Override
     public void onSubscribe(Disposable d) {
@@ -42,42 +25,16 @@ public class HttpObserver<T> implements Observer<T> {
     }
 
     @Override
-    public void onNext(T t) {
-        if (t != null || !t.equals("")) {
-            if (t instanceof Data) {//Entity类型返回
-                Data data = (Data) t;
-                iCommonHttpCallback.onResponse(requestCode,data);
-                switch (data.getStatus()) {
-                    case 1://正常
-                        iCommonHttpCallback.onSuccess(requestCode, data.getData());
-                        break;
-                    default://异常
-                        iCommonHttpCallback.onException(requestCode,data);
-                        break;
-                }
-            } else {//ResponseBody类型返回
-                ResponseBody responseBody = (ResponseBody) t;
-                String result = "";
-                if(responseBody!=null && !responseBody.equals("")){
-                    try {
-                        result = responseBody.source().readUtf8();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                iCommonHttpCallback.onResponse(requestCode,result);
-            }
-        }
+    public void onNext(ResponseBody responseBody) {
+        resCallback.onResponse(responseBody);
     }
 
     @Override
     public void onError(Throwable e) {
-        ToastUtils.showShort(mContext, ExceptionHandleHelper.getExceptionMsg(e));
-        iCommonHttpCallback.onError(requestCode,e);
+        resCallback.onError(e);
     }
 
     @Override
     public void onComplete() {
-
     }
 }
