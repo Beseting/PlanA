@@ -10,7 +10,6 @@ import com.cdbhe.plana.base.MyBaseActivity;
 import com.cdbhe.plib.utils.MeasureUnitTranUtil;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MeasureUnitTranUtilActivity extends MyBaseActivity {

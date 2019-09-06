@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class UtilsActivity extends MyBaseActivity implements UtilsButtonClickListener {
 

@@ -12,4 +12,6 @@
     <dimen name="dp_20">20dp</dimen>
     <dimen name="dp_25">25dp</dimen>
     <dimen name="dp_30">30dp</dimen>
+
+    <dimen name="statusbar_view_height">0dp</dimen>
 </resources>

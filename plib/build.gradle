@@ -7,7 +7,7 @@ android {
         targetSdkVersion 28
         versionCode 10
         versionName "1.1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -38,7 +38,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
     // AVLoadingIndicatorView
     implementation 'com.wang.avi:library:2.1.3'
     // Retrofit
@@ -54,9 +54,7 @@ dependencies {
     // FileDownloader
     implementation 'com.liulishuo.filedownloader:library:1.7.5'
     // 沉浸式状态栏
-    implementation ('com.jaeger.statusbarutil:library:1.5.0'){
-        exclude group: 'com.android.support'
-    }
+    implementation 'com.jaeger.statusbarutil:library:1.5.0'
     //图片浏览
     api 'com.github.Beseting:PhotoBrowse:v1.7.2'
 }

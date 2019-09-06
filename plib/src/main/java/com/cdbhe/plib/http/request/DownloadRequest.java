@@ -1,6 +1,6 @@
 package com.cdbhe.plib.http.request;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.cdbhe.plib.http.file.download.FileDownLoadObserver;
 import com.cdbhe.plib.http.file.download.FileDownloadCallback;

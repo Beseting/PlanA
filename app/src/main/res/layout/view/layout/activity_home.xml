@@ -8,11 +8,10 @@
     tools:context="com.cdbhe.plana.mvvm.home.view.HomeActivity">
 
     <ImageView
+        android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        android:src="@mipmap/banner" />
+        android:adjustViewBounds="true" />
 
     <GridView
         android:id="@+id/gridView"

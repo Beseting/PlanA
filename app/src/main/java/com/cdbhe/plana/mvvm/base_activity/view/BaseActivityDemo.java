@@ -4,9 +4,6 @@ import android.Manifest;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.content.res.ResourcesCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.content.res.AppCompatResources;
 import android.view.View;
 import android.widget.ListView;
 
@@ -16,14 +13,12 @@ import com.cdbhe.plana.mvvm.base_activity.adapter.BaseActivityButtonAdapter;
 import com.cdbhe.plana.mvvm.base_activity.listener.OnBaseActivityButtonClickListener;
 import com.cdbhe.plana.mvvm.base_activity.model.ButtonModel;
 import com.cdbhe.plib.base.BaseActivity;
-import com.cdbhe.plib.http.common.RequestParams;
 import com.cdbhe.plib.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class BaseActivityDemo extends MyBaseActivity implements OnBaseActivityButtonClickListener,BaseActivity.OnTitleBarListener {
 

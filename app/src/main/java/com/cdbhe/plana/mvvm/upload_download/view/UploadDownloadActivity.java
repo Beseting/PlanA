@@ -13,8 +13,6 @@ import com.cdbhe.plana.mvvm.upload_download.biz.IUploadDownloadBiz;
 import com.cdbhe.plana.mvvm.upload_download.vm.UploadDownloadVm;
 import com.cdbhe.plib.utils.ToastUtils;
 
-import java.security.Permission;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 

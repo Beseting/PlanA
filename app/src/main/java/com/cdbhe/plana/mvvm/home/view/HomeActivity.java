@@ -1,11 +1,12 @@
 package com.cdbhe.plana.mvvm.home.view;
 
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.cdbhe.plana.R;
 import com.cdbhe.plana.base.MyBaseActivity;
 import com.cdbhe.plana.mvvm.base_activity.view.BaseActivityDemo;
@@ -16,6 +17,7 @@ import com.cdbhe.plana.mvvm.router_manage.view.RouterManageActivity;
 import com.cdbhe.plana.mvvm.upload_download.view.UploadDownloadActivity;
 import com.cdbhe.plana.mvvm.utils.view.UtilsActivity;
 import com.cdbhe.plib.router.PRouter;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,8 @@ import butterknife.BindView;
 import butterknife.OnItemClick;
 
 public class HomeActivity extends MyBaseActivity {
+    @BindView(R.id.banner)
+    ImageView banner;
     @BindView(R.id.gridView)
     GridView gridView;
     private List<HomeMenuModel> homeMenuModelList;
@@ -39,7 +43,6 @@ public class HomeActivity extends MyBaseActivity {
         setIsShowStatusBar(false);//隐藏状态栏
         hideTitleBar();//隐藏标题栏
         initMenuGridView();
-
     }
 
     /**
