@@ -6,7 +6,6 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.cdbhe.plana.R;
 import com.cdbhe.plana.base.MyBaseActivity;
 import com.cdbhe.plana.mvvm.base_activity.view.BaseActivityDemo;

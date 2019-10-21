@@ -45,7 +45,7 @@ public class Converter {
      * @param viewId
      * @return
      */
-    private <T extends View> T getView(int viewId) {
+    public <T extends View> T getView(int viewId) {
         View childView = mViews.get(viewId);
         if (childView == null) {
             childView = mConvertView.findViewById(viewId);

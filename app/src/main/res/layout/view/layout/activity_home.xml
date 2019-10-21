@@ -11,6 +11,8 @@
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:src="@mipmap/banner"
+        android:scaleType="centerCrop"
         android:adjustViewBounds="true" />
 
     <GridView
