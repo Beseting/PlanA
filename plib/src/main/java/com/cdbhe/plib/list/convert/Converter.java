@@ -19,7 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.kevin.photo_browse.utils.GlideHelper;
+import com.kevin.photo_browse.utils.PicassoHelper;
 
 public class Converter {
     private View mConvertView;
@@ -124,7 +124,7 @@ public class Converter {
      */
     public Converter setImageResource(@IdRes int viewId, String url) {
         ImageView iv = getView(viewId);
-        GlideHelper.load(mConvertView.getContext(),url,iv);
+        PicassoHelper.load(url,iv);
         return this;
     }
 

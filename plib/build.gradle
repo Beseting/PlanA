@@ -56,5 +56,5 @@ dependencies {
     // 沉浸式状态栏
     implementation 'com.jaeger.statusbarutil:library:1.5.0'
     //图片浏览
-    api 'com.github.Beseting:PhotoBrowse:v1.7.2'
+    api 'com.github.Beseting:PhotoBrowse:v1.7.3'
 }
