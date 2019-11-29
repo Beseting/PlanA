@@ -28,4 +28,15 @@
         <attr name="border_width" format="dimension" />
         <attr name="border_color" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="BounceScrollView">
+        <attr name="damping" format="float"/>
+        <attr name="scrollOrientation" format="enum">
+            <enum name="vertical" value="0"/>
+            <enum name="horizontal" value="1"/>
+        </attr>
+        <attr name="incrementalDamping" format="boolean"/>
+        <attr name="bounceDelay" format="integer"/>
+        <attr name="triggerOverScrollThreshold" format="integer"/>
+    </declare-styleable>
 </resources>

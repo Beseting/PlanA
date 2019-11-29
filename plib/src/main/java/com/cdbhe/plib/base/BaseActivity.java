@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import androidx.annotation.IntRange;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
@@ -134,6 +135,9 @@ public abstract class BaseActivity extends BasePermissionsActivity {
         } else if (cls == RelativeLayout.class) {//相对布局
             RelativeLayout relativeLayout = (RelativeLayout) mRootView;
             relativeLayout.addView(rlTitleBar, 0);
+        }else if(cls == ConstraintLayout.class){//约束布局
+            ConstraintLayout constraintLayout = (ConstraintLayout)mRootView;
+            constraintLayout.addView(rlTitleBar,0);
         }
     }
 
@@ -179,6 +183,20 @@ public abstract class BaseActivity extends BasePermissionsActivity {
      */
     protected void setTitle(String title) {
         action_title.setText(title);
+    }
+
+    /**
+     * 显示标题
+     */
+    protected void showTitle() {
+        action_title.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * 隐藏标题
+     */
+    protected void hideTitle() {
+        action_title.setVisibility(View.GONE);
     }
 
     /**
@@ -242,6 +260,24 @@ public abstract class BaseActivity extends BasePermissionsActivity {
      */
     protected void setMoreTv(int resId) {
         this.action_more_tv.setText(resId);
+    }
+
+    /**
+     * 设置更多文字颜色
+     *
+     * @param color
+     */
+    protected void setMoreTvTextColor(int color) {
+        action_more_tv.setTextColor(color);
+    }
+
+    /**
+     * 设置更多文字字体大小
+     *
+     * @param textSizeSP
+     */
+    protected void setMoreTvTextSize(int textSizeSP) {
+        action_more_tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSizeSP);
     }
 
     /**
@@ -360,20 +396,20 @@ public abstract class BaseActivity extends BasePermissionsActivity {
     /**
      * 设置是否显示状态栏 如果显示 则会恢复默认颜色的状态栏
      *
-     * @param isShow
+     * @param isFullScreen
      */
-    protected void setIsShowStatusBar(boolean isShow) {
+    protected void setIsFullScreen(boolean isFullScreen) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 //5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色
                 Window window = getWindow();
                 View decorView = window.getDecorView();
-                if (isShow) { //显示状态栏
+                if (isFullScreen) { //全屏
                     WindowManager.LayoutParams lp = getWindow().getAttributes();
                     lp.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
                     getWindow().setAttributes(lp);
                     getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
-                } else { //隐藏状态栏
+                } else { //非全屏
                     WindowManager.LayoutParams lp = getWindow().getAttributes();
                     lp.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN);
                     getWindow().setAttributes(lp);
@@ -383,7 +419,7 @@ public abstract class BaseActivity extends BasePermissionsActivity {
                 Window window = getWindow();
                 WindowManager.LayoutParams attributes = window.getAttributes();
                 int flagTranslucentStatus;
-                if (isShow) {
+                if (!isFullScreen) {
                     flagTranslucentStatus = WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
                 } else {
                     flagTranslucentStatus = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
@@ -392,7 +428,7 @@ public abstract class BaseActivity extends BasePermissionsActivity {
                 window.setAttributes(attributes);
             }
         }
-        if (isShow)
+        if (!isFullScreen)
             setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
     }
 

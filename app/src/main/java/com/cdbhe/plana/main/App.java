@@ -1,11 +1,10 @@
-package com.cdbhe.plana;
+package com.cdbhe.plana.main;
 
 import android.app.Application;
 
 import com.cdbhe.plib.http.retrofit.HttpConfig;
 import com.cdbhe.plib.http.retrofit.RetrofitClient;
 import com.cdbhe.plib.utils.AppUtils;
-import com.cdbhe.plib.utils.LogUtils;
 import com.tencent.bugly.crashreport.CrashReport;
 
 /**
@@ -13,6 +12,7 @@ import com.tencent.bugly.crashreport.CrashReport;
  */
 
 public class App extends Application {
+
     @Override
     public void onCreate() {
         super.onCreate();

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".mvvm.common_adapter.view.CommonAdapterActivity">
+
+
+    <TextView
+        style="@style/baseText"
+        android:layout_margin="@dimen/dp_10"
+        android:text="1.GridView + CommonAdapter" />
+
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:horizontalSpacing="@dimen/dp_10"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="@dimen/dp_10" />
+
+    <TextView
+        style="@style/baseText"
+        android:layout_margin="@dimen/dp_10"
+        android:text="2.ListView + CommonAdapter" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:divider="@color/list_divider"
+        android:dividerHeight="1px" />
+
+</LinearLayout>

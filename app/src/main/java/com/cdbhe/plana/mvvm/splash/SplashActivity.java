@@ -17,7 +17,7 @@ public class SplashActivity extends MyBaseActivity {
 
     @Override
     public void initView(Bundle var1) {
-        setIsShowStatusBar(false);//隐藏状态栏
+        setIsFullScreen(true);//全屏
         hideTitleBar();//隐藏标题栏
         // 2s后跳转到HomeActivity
         new Handler().postDelayed(new Runnable() {
