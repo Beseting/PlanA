@@ -53,7 +53,10 @@ public abstract class BaseActivity extends BasePermissionsActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);//设置无标题
-        getSupportActionBar().hide();
+        if (getSupportActionBar() != null)
+            getSupportActionBar().hide();
+        if (getActionBar() != null)
+            getActionBar().hide();
         viewDataBinding = DataBindingUtil.setContentView(this, getContentViewResId());//初始化DataBinding
         ActivityStack.getInstance().pushActivity(this);//入栈
         initLoadingDialog();//初始化LoadingDialog

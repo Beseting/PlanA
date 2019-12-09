@@ -19,7 +19,7 @@ PlanA是一款集成BaseActivity，BaseFragment，BasePermission，PRouter路由
     2.添加依赖
 
     dependencies {
-	   implementation 'com.github.Beseting:PlanA:v1.2.2'
+	   implementation 'com.github.Beseting:PlanA:v1.2.3'
 	}
 
 ## 2.混淆
