@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -12,11 +11,9 @@ import com.cdbhe.plana.R;
 import com.cdbhe.plana.base.MyBaseActivity;
 import com.cdbhe.plana.mvvm.http.biz.IHttpDemoBiz;
 import com.cdbhe.plana.mvvm.http.vm.HttpDemoVM;
-import com.cdbhe.plib.base.BaseActivity;
 import com.cdbhe.plib.utils.ToastUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class HttpDemoActivity extends MyBaseActivity implements IHttpDemoBiz {
