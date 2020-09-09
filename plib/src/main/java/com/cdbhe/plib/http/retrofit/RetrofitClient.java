@@ -6,9 +6,14 @@ import com.cdbhe.plib.http.request.GetRequest;
 import com.cdbhe.plib.http.request.PostRequest;
 import com.cdbhe.plib.http.request.UploadRequest;
 
+import java.io.IOException;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -20,6 +25,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 public class RetrofitClient {
     private HttpConfig httpConfig = null; // Http基础配置
     private ApiService apiService;
+    private RequestInterceptor requestInterceptor = null;//请求拦截器
 
     private static class SingletonHolder {
         private static RetrofitClient INSTANCE = new RetrofitClient();
@@ -29,17 +35,45 @@ public class RetrofitClient {
         return SingletonHolder.INSTANCE;
     }
 
-    public void init(HttpConfig httpConfig){
+    public void init(HttpConfig httpConfig) {
+        this.init(httpConfig, null);
+    }
+
+    public void init(HttpConfig httpConfig, Map<String, String> commonHeaderMap) {
         this.httpConfig = httpConfig;
+        this.requestInterceptor = new RequestInterceptor(commonHeaderMap);
         this.initRetrofit();
     }
 
-    private void initRetrofit(){
+    /**
+     * 请求拦截器，修改请求header
+     */
+    private class RequestInterceptor implements Interceptor {
+        private Map<String, String> commonHeaderMap;
+
+        public RequestInterceptor(Map<String, String> commonHeaderMap) {
+            this.commonHeaderMap = commonHeaderMap;
+        }
+
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Request.Builder builder = chain.request().newBuilder();
+            if (commonHeaderMap != null) {
+                for (Map.Entry<String, String> entry : commonHeaderMap.entrySet()) {
+                    builder.addHeader(entry.getKey(), entry.getValue());
+                }
+            }
+            return chain.proceed(builder.build());
+        }
+    }
+
+    private void initRetrofit() {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addNetworkInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS))
                 .connectTimeout(httpConfig.getDefaultConnectTimeout(), TimeUnit.MILLISECONDS)
-                .readTimeout(httpConfig.getDefaultReadTimeout(),TimeUnit.MILLISECONDS)
-                .writeTimeout(httpConfig.getDefaultWriteTimeout(),TimeUnit.MILLISECONDS)
+                .readTimeout(httpConfig.getDefaultReadTimeout(), TimeUnit.MILLISECONDS)
+                .writeTimeout(httpConfig.getDefaultWriteTimeout(), TimeUnit.MILLISECONDS)
+                .addInterceptor(requestInterceptor)
                 .build();
         Retrofit retrofit = new Retrofit.Builder()
                 .client(okHttpClient)
@@ -51,6 +85,7 @@ public class RetrofitClient {
 
     /**
      * 取消目标网络请求
+     *
      * @param taskId
      */
     public void cancelRequest(String taskId) {
@@ -60,33 +95,35 @@ public class RetrofitClient {
     /**
      * 取消所有网络请求
      */
-    public void cancelAll(){
+    public void cancelAll() {
         RxManager.getInstance().cancelAll();
     }
 
     /**
      * Get请求
+     *
      * @param url 相对路径
      * @return GetRequest对象
      */
     public GetRequest get(String url) {
-        return new GetRequest(url,apiService);
+        return new GetRequest(url, apiService);
     }
 
     /**
      * Post请求
+     *
      * @param url 相对路径
      * @return PostRequest对象
      */
-    public PostRequest post(String url){
-        return new PostRequest(url,apiService);
+    public PostRequest post(String url) {
+        return new PostRequest(url, apiService);
     }
 
-    public UploadRequest upload(String url){
-        return new UploadRequest(url,apiService);
+    public UploadRequest upload(String url) {
+        return new UploadRequest(url, apiService);
     }
 
-    public DownloadRequest download(String url){
-        return new DownloadRequest(url,apiService);
+    public DownloadRequest download(String url) {
+        return new DownloadRequest(url, apiService);
     }
 }
