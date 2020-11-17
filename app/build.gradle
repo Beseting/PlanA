@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.cdbhe.plana"
         minSdkVersion 14
-        targetSdkVersion 28
-        versionCode 9
-        versionName "1.0.9"
+        targetSdkVersion 29
+        versionCode 10
+        versionName "1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -68,4 +68,6 @@ dependencies {
     // ButterKnife
     implementation 'com.jakewharton:butterknife:10.1.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

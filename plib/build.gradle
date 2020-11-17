@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 28
-        versionCode 12
-        versionName "1.1.2"
+        targetSdkVersion 29
+        versionCode 13
+        versionName "1.1.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,15 +38,15 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     // AVLoadingIndicatorView
     implementation 'com.wang.avi:library:2.1.3'
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
     // Gson
-    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.code.gson:gson:2.8.6'
     // OkHttp
     api 'com.squareup.okhttp3:logging-interceptor:3.9.0'
     // RxJava RxAndroid
@@ -56,6 +56,4 @@ dependencies {
     implementation 'com.liulishuo.filedownloader:library:1.7.5'
     // 沉浸式状态栏
     implementation 'com.jaeger.statusbarutil:library:1.5.0'
-    //图片浏览
-    api 'com.github.Beseting:PhotoBrowse:v1.7.4'
 }

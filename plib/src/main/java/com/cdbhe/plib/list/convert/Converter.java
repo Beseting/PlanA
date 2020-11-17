@@ -3,10 +3,6 @@ package com.cdbhe.plib.list.convert;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import androidx.annotation.ColorInt;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.IdRes;
-import androidx.annotation.StringRes;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -19,7 +15,10 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.kevin.photo_browse.utils.PicassoHelper;
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IdRes;
+import androidx.annotation.StringRes;
 
 public class Converter {
     private View mConvertView;
@@ -56,6 +55,7 @@ public class Converter {
 
     /**
      * 设置控件显示隐藏
+     *
      * @param viewId
      * @param visible
      * @return
@@ -68,6 +68,7 @@ public class Converter {
 
     /**
      * 设置文本
+     *
      * @param viewId
      * @param value
      * @return
@@ -80,6 +81,7 @@ public class Converter {
 
     /**
      * 设置文本
+     *
      * @param viewId
      * @param strId
      * @return
@@ -92,6 +94,7 @@ public class Converter {
 
     /**
      * 设置文字颜色
+     *
      * @param viewId
      * @param textColor
      * @return
@@ -116,20 +119,8 @@ public class Converter {
     }
 
     /**
-     * 给指定viewId的ImageView控件设置网络图片
-     *
-     * @param viewId
-     * @param url
-     * @return
-     */
-    public Converter setImageResource(@IdRes int viewId, String url) {
-        ImageView iv = getView(viewId);
-        PicassoHelper.load(url,iv);
-        return this;
-    }
-
-    /**
      * 设置适配器
+     *
      * @param viewId
      * @param adapter
      * @return
@@ -143,6 +134,7 @@ public class Converter {
     /**
      * 设置控件Alpha值 不允许重复调用
      * Alpha 范围 0-1.
+     *
      * @param viewId
      * @param value
      * @return
@@ -161,6 +153,7 @@ public class Converter {
 
     /**
      * 设置控件的背景色
+     *
      * @param viewId
      * @param color
      * @return
@@ -173,6 +166,7 @@ public class Converter {
 
     /**
      * 设置控件背景资源
+     *
      * @param viewId
      * @param backgroundRes
      * @return
@@ -185,6 +179,7 @@ public class Converter {
 
     /**
      * 设置控件选中
+     *
      * @param viewId
      * @param checked
      * @return
@@ -199,6 +194,7 @@ public class Converter {
 
     /**
      * 设置图片控件图片显示
+     *
      * @param viewId
      * @param drawable
      * @return
@@ -211,6 +207,7 @@ public class Converter {
 
     /**
      * 设置图片控件图片显示
+     *
      * @param viewId
      * @param bitmap
      * @return
@@ -223,6 +220,7 @@ public class Converter {
 
     /**
      * 设置进度
+     *
      * @param viewId
      * @param progress
      * @return
@@ -235,6 +233,7 @@ public class Converter {
 
     /**
      * 设置进度
+     *
      * @param viewId
      * @param progress
      * @param max
@@ -249,6 +248,7 @@ public class Converter {
 
     /**
      * 设置RatingBar的rating
+     *
      * @param viewId
      * @param rating
      * @return
@@ -261,6 +261,7 @@ public class Converter {
 
     /**
      * 设置RatingBar的rating
+     *
      * @param viewId
      * @param rating
      * @param max
@@ -275,6 +276,7 @@ public class Converter {
 
     /**
      * 设置checked事件
+     *
      * @param viewId
      * @param listener
      * @return
@@ -287,6 +289,7 @@ public class Converter {
 
     /**
      * 设置点击事件
+     *
      * @param viewId
      * @param listener
      * @return
@@ -299,6 +302,7 @@ public class Converter {
 
     /**
      * 设置长按事件
+     *
      * @param viewId
      * @param listener
      * @return

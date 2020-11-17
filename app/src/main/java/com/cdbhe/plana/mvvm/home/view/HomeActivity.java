@@ -13,12 +13,12 @@ import com.cdbhe.plana.mvvm.common_adapter.view.CommonAdapterActivity;
 import com.cdbhe.plana.mvvm.home.adapter.HomeMenuAdapter;
 import com.cdbhe.plana.mvvm.home.model.HomeMenuModel;
 import com.cdbhe.plana.mvvm.http.view.HttpDemoActivity;
-import com.cdbhe.plana.mvvm.photo_browse.view.PhotoBrowseActivity;
 import com.cdbhe.plana.mvvm.router_manage.view.RouterManageActivity;
 import com.cdbhe.plana.mvvm.upload_download.view.UploadDownloadActivity;
 import com.cdbhe.plana.mvvm.utils.view.UtilsActivity;
 import com.cdbhe.plana.mvvm.widget.view.WidgetActivity;
 import com.cdbhe.plib.router.PRouter;
+import com.cdbhe.plib.utils.ToastUtils;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -87,13 +87,14 @@ public class HomeActivity extends MyBaseActivity {
                 PRouter.getInstance().navigation(this, WidgetActivity.class);
                 break;
             case 6://图片浏览
-                PRouter.getInstance().navigation(this, PhotoBrowseActivity.class);
+//                PRouter.getInstance().navigation(this, PhotoBrowseActivity.class);
+                ToastUtils.showLong(this, "见GitHub：PhotoBrowse");
                 break;
             case 7://万能适配器
                 PRouter.getInstance().navigation(this, CommonAdapterActivity.class);
                 break;
             default://其他
-                Snackbar.make(gridView,"持续维护中，敬请期待！", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(gridView, "持续维护中，敬请期待！", Snackbar.LENGTH_SHORT).show();
                 break;
         }
     }

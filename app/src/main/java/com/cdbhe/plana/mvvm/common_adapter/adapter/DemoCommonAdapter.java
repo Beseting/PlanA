@@ -1,12 +1,13 @@
 package com.cdbhe.plana.mvvm.common_adapter.adapter;
 
 import android.content.Context;
+import android.widget.ImageView;
 
 import com.cdbhe.plana.R;
 import com.cdbhe.plana.mvvm.common_adapter.model.CommonAdapterModel;
 import com.cdbhe.plib.list.adapter.CommonAdapter;
 import com.cdbhe.plib.list.convert.Converter;
-import com.kevin.photo_browse.utils.PicassoHelper;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class DemoCommonAdapter extends CommonAdapter<CommonAdapterModel> {
 
     @Override
     public void convert(Converter holder, CommonAdapterModel item, int position) {
-        PicassoHelper.load(item.getImg(),holder.getView(R.id.imageIv));
-        holder.setText(R.id.nameTv,item.getName());
+        Picasso.get().load(item.getImg()).into((ImageView) holder.getView(R.id.imageIv));
+        holder.setText(R.id.nameTv, item.getName());
     }
 }
