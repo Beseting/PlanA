@@ -10,6 +10,9 @@ import com.cdbhe.plib.utils.DateUtils;
 import com.google.gson.Gson;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -67,7 +70,13 @@ public class UploadRequest {
         String taskId = String.valueOf(DateUtils.getTimeInMillis());
         FileUploadObserver fileUploadObserver = new FileUploadObserver(taskId,fileUploadCallback);
         UploadFileRequestBody uploadFileRequestBody = new UploadFileRequestBody(file, fileUploadObserver);
-        MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), uploadFileRequestBody);
+        String fileName;
+        try {
+            fileName = URLEncoder.encode(file.getName(),"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            fileName = file.getName();
+        }
+        MultipartBody.Part part = MultipartBody.Part.createFormData("file", fileName, uploadFileRequestBody);
         if(headers.get("Content-Type")!=null&&headers.get("Content-Type").equals("application/json;charset=utf-8")) { // Json参数
             RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),new Gson().toJson(params));
             apiService.uploadFile(headers,url,requestBody,part).subscribeOn(Schedulers.io())
