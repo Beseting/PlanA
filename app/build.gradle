@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     defaultConfig {
-        applicationId "com.cdbhe.plana"
+        applicationId "com.ym.plana"
         minSdkVersion 14
-        targetSdkVersion 29
-        versionCode 11
-        versionName "1.1.1"
+        targetSdkVersion 30
+        versionCode 12
+        versionName "2.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -31,18 +31,14 @@ android {
         }
     }
 
-    dataBinding {
-        enabled = true
-    }
-
     sourceSets {
         main {
             res.srcDirs = [
                     'src/main/res',
-                    'src/main/res/layout',
-                    'src/main/res/layout/view',
-                    'src/main/res/layout/adapter',
-                    'src/main/res/layout/other'
+                    'src/main/res/layouts',
+                    'src/main/res/layouts/view',
+                    'src/main/res/layouts/adapter',
+                    'src/main/res/layouts/other'
             ]
         }
     }
@@ -50,6 +46,10 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        dataBinding = true
     }
 }
 
@@ -70,4 +70,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+    // LeakCanary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'
 }

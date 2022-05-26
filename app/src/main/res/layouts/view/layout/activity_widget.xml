@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".mvvm.widget.view.WidgetActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/baseText"
+                android:layout_margin="@dimen/dp_10"
+                android:text="1.仿ios下拉上拉反弹控件-BounceScrollView" />
+
+            <com.ym.plib.widget.BounceScrollView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="#eeeeee"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="@style/baseText"
+                    android:text="BounceScrollView"
+                    android:gravity="center" />
+            </com.ym.plib.widget.BounceScrollView>
+
+            <TextView
+                style="@style/baseText"
+                android:layout_margin="@dimen/dp_10"
+                android:text="2.圆形图片控件-CircleImageView" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10">
+
+                <com.ym.plib.widget.CircleImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@mipmap/banner"
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:layout_gravity="center_vertical"
+                    app:border_color="#111"
+                    app:border_width="2dp" />
+
+                <com.ym.plib.widget.CircleImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@mipmap/banner"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center_vertical"
+                    app:border_width="0dp" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/baseText"
+                android:layout_margin="@dimen/dp_10"
+                android:text="3.禁用滚动的GridView-NoScrollGridView" />
+
+            <com.ym.plib.widget.NoScrollGridView
+                android:id="@+id/noScrollGridView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="3"
+                android:stretchMode="columnWidth"
+                android:horizontalSpacing="@dimen/dp_10"
+                android:verticalSpacing="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10" />
+
+            <TextView
+                style="@style/baseText"
+                android:layout_margin="@dimen/dp_10"
+                android:text="4.禁用滚动的ListView-NoScrollListView" />
+
+            <com.ym.plib.widget.NoScrollListView
+                android:id="@+id/noScrollListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:divider="@null"
+                android:dividerHeight="1dp"/>
+
+            <TextView
+                style="@style/baseText"
+                android:layout_margin="@dimen/dp_10"
+                android:text="4.打分控件-RatingBar" />
+
+            <com.ym.plib.widget.RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                app:clickable="true"
+                app:starCount="5"
+                app:starEmpty="@mipmap/ic_star_empty"
+                app:starFill="@mipmap/ic_star_fill"
+                app:starHalf="@mipmap/ic_star_half"
+                app:starImageSize="13dp"
+                app:starStep="3.5" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

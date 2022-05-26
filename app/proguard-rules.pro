@@ -64,4 +64,4 @@
 # Gson
 -keep class com.google.gson.stream.** { *; }
 -keepattributes EnclosingMethod
--keep class com.cdbhe.plib.http.model.**{*;}
+-keep class com.ym.plib.http.model.**{*;}
