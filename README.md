@@ -31,3 +31,8 @@ PlanA是一款集成BaseActivity，BaseFragment，BasePermission，PRouter路由
 ## 4.联系作者
    简书：https://www.jianshu.com/u/ba1cc3214081
    CSDN：https://blog.csdn.net/zjb12316
+## 5.更新日志
+   ### v2.0.0
+   1.此版本替换库包名；
+
+   2.修复库中ActivityStack MemoryLeak，修复demo crash；
